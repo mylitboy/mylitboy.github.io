@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Mylitboy, 麦粒橙, VS Code, Visual Studio Code">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="VSCode常用快捷键常用 General按 Press    |     功能 Function|–|–|Ctrl + Shift + P，F1    |    显示命令面板 Show Command PaletteCtrl + P    |    快速打开 Quick OpenCtrl + Shift + N    |    新窗口/实例 New window/instanceCtrl + S">
+<meta name="keywords" content="Mylitboy, 麦粒橙, VS Code, Visual Studio Code">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Visual Studio Code常用快捷键">
+<meta property="og:url" content="https://blog.mylitboy.com/article/development/visual-studio-code-key-map-introduction/index.html">
+<meta property="og:site_name" content="-麦粒橙-技术博客-">
+<meta property="og:description" content="VSCode常用快捷键常用 General按 Press    |     功能 Function|–|–|Ctrl + Shift + P，F1    |    显示命令面板 Show Command PaletteCtrl + P    |    快速打开 Quick OpenCtrl + Shift + N    |    新窗口/实例 New window/instanceCtrl + S">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-05-08T05:18:32.098Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Visual Studio Code常用快捷键">
+<meta name="twitter:description" content="VSCode常用快捷键常用 General按 Press    |     功能 Function|–|–|Ctrl + Shift + P，F1    |    显示命令面板 Show Command PaletteCtrl + P    |    快速打开 Quick OpenCtrl + Shift + N    |    新窗口/实例 New window/instanceCtrl + S">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://blog.mylitboy.com/article/development/visual-studio-code-key-map-introduction/">
+
+
+
+
+
+  <title>Visual Studio Code常用快捷键 | -麦粒橙-技术博客-</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?4da59f76a7da6f6f09a404f9f4637848";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">-麦粒橙-技术博客-</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">积累点滴，成就梦想</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.mylitboy.com/article/development/visual-studio-code-key-map-introduction/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mylitboy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="-麦粒橙-技术博客-">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Visual Studio Code常用快捷键</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-20T09:43:14+00:00">
+                2018-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tools/" itemprop="url" rel="index">
+                    <span itemprop="name">Tools</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/article/development/visual-studio-code-key-map-introduction/" class="leancloud_visitors" data-flag-title="Visual Studio Code常用快捷键">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="VSCode常用快捷键"><a href="#VSCode常用快捷键" class="headerlink" title="VSCode常用快捷键"></a>VSCode常用快捷键</h1><h2 id="常用-General"><a href="#常用-General" class="headerlink" title="常用 General"></a>常用 General</h2><p>按 Press    |     功能 Function<br>|–|–|<br>Ctrl + Shift + P，F1    |    显示命令面板 Show Command Palette<br>Ctrl + P    |    快速打开 Quick Open<br>Ctrl + Shift + N    |    新窗口/实例 New window/instance<br>Ctrl + Shift + W    |    关闭窗口/实例 Close window/instance</p>
+<h2 id="基础编辑-Basic-editing"><a href="#基础编辑-Basic-editing" class="headerlink" title="基础编辑 Basic editing"></a>基础编辑 Basic editing</h2><p>按 Press    |    功能 Function<br>|–|–|<br>Ctrl+X    |    剪切行（空选定） Cut line (empty selection)<br>Ctrl+C    |    复制行（空选定）Copy line (empty selection)<br>Alt+ ↑ / ↓    |    向上/向下移动行 Move line up/down<br>Shift+Alt + ↓ / ↑    |    向上/向下复制行 Copy line up/down<br>Ctrl+Shift+K    |    删除行 Delete line<br>Ctrl+Enter    |    在下面插入行 Insert line below<br>Ctrl+Shift+Enter    |    在上面插入行 Insert line above<br>Ctrl+Shift+\    |    跳到匹配的括号 Jump to matching bracket<br>Ctrl+] / [    |    缩进/缩进行 Indent/outdent line<br>Home    |    转到行首 Go to beginning of line<br>End    |    转到行尾 Go to end of line<br>Ctrl+Home    |    转到文件开头 Go to beginning of file<br>Ctrl+End    |    转到文件末尾 Go to end of file<br>Ctrl+↑ / ↓    |    向上/向下滚动行 Scroll line up/down<br>Alt+PgUp / PgDown    |    向上/向下滚动页面 Scroll page up/down<br>Ctrl+Shift+[    |    折叠（折叠）区域 Fold (collapse) region<br>Ctrl+Shift+]    |    展开（未折叠）区域 Unfold (uncollapse) region<br>Ctrl+K Ctrl+[    |    折叠（未折叠）所有子区域 Fold (collapse) all subregions<br>Ctrl+K Ctrl+]    |    展开（未折叠）所有子区域 Unfold (uncollapse) all subregions<br>Ctrl+K Ctrl+0    |    折叠（折叠）所有区域 Fold (collapse) all regions<br>Ctrl+K Ctrl+J    |    展开（未折叠）所有区域 Unfold (uncollapse) all regions<br>Ctrl+K Ctrl+C    |    添加行注释 Add line comment<br>Ctrl+K Ctrl+U    |    删除行注释 Remove line comment<br>Ctrl+/    |    切换行注释 Toggle line comment<br>Shift+Alt+A    |    切换块注释 Toggle block comment<br>Alt+Z    |    切换换行 Toggle word wrap</p>
+<h2 id="导航-Navigation"><a href="#导航-Navigation" class="headerlink" title="导航 Navigation"></a>导航 Navigation</h2><p>按 Press    |    功能 Function<br>|–|–|<br>Ctrl + T    |    显示所有符号 Show all Symbols<br>Ctrl + G    |    转到行… Go to Line…<br>Ctrl + P    |    转到文件… Go to File…<br>Ctrl + Shift + O    |    转到符号… Go to Symbol…<br>Ctrl + Shift + M    |    显示问题面板 Show Problems panel<br>F8    |    转到下一个错误或警告 Go to next error or warning<br>Shift + F8    |    转到上一个错误或警告 Go to previous error or warning<br>Ctrl + Shift + Tab    |    导航编辑器组历史记录 Navigate editor group history<br>Alt + ←/→    |    返回/前进 Go back / forward<br>Ctrl + M    |    切换选项卡移动焦点 Toggle Tab moves focus</p>
+<h2 id="搜索和替换-Search-and-replace"><a href="#搜索和替换-Search-and-replace" class="headerlink" title="搜索和替换 Search and replace"></a>搜索和替换 Search and replace</h2><p>按 Press    |    功能 Function<br>|–|–|<br>Ctrl + F    |    查找 Find<br>Ctrl + H    |    替换 Replace<br>F3 / Shift + F3    |    查找下一个/上一个 Find next/previous<br>Alt + Enter    |    选择查找匹配的所有出现 Select all occurences of Find match<br>Ctrl + D    |    将选择添加到下一个查找匹配 Add selection to next Find match<br>Ctrl + K Ctrl + D    |    将最后一个选择移至下一个查找匹配项 Move last selection to next Find match<br>Alt + C / R / W    |    切换区分大小写/正则表达式/整个词 Toggle case-sensitive / regex / whole word</p>
+<h2 id="多光标和选择-Multi-cursor-and-selection"><a href="#多光标和选择-Multi-cursor-and-selection" class="headerlink" title="多光标和选择 Multi-cursor and selection"></a>多光标和选择 Multi-cursor and selection</h2><p>按 Press    |    功能 Function<br>|–|–|<br>Alt +单击    |    插入光标 Insert cursor<br>Ctrl + Alt +↑/↓    |    在上/下插入光标 Insert cursor above / below<br>Ctrl + U    |    撤消上一个光标操作 Undo last cursor operation<br>Shift + Alt + I    |    在选定的每一行的末尾插入光标 Insert cursor at end of each line selected<br>Ctrl + I    |    选择当前行 Select current line<br>Ctrl + Shift + L    |    选择当前选择的所有出现 Select all occurrences of current selection<br>Ctrl + F2    |    选择当前字的所有出现 Select all occurrences of current word<br>Shift + Alt + →    |    展开选择 Expand selection<br>Shift + Alt + ←    |    缩小选择 Shrink selection<br>Shift + Alt + （拖动鼠标）    |    列（框）选择 Column (box) selection<br>Ctrl + Shift + Alt +（箭头键）    |    列（框）选择 Column (box) selection<br>Ctrl + Shift + Alt + PgUp / PgDown    |    列（框）选择页上/下 Column (box) selection page up/down</p>
+<h2 id="丰富的语言编辑-Rich-languages-editing"><a href="#丰富的语言编辑-Rich-languages-editing" class="headerlink" title="丰富的语言编辑 Rich languages editing"></a>丰富的语言编辑 Rich languages editing</h2><p>按 Press    |    功能 Function<br>|–|–|<br>Ctrl + 空格    |    触发建议 Trigger suggestion<br>Ctrl + Shift + Space    |    触发器参数提示 Trigger parameter hints<br>Tab    |    Emmet 展开缩写 Emmet expand abbreviation<br>Shift + Alt + F    |    格式化文档 Format document<br>Ctrl + K Ctrl + F    |    格式选定区域 Format selection<br>F12    |    转到定义 Go to Definition<br>Alt + F12    |    Peek定义 Peek Definition<br>Ctrl + K F12    |    打开定义到边 Open Definition to the side<br>Ctrl + .    |    快速解决 Quick Fix<br>Shift + F12    |    显示引用 Show References<br>F2    |    重命名符号 Rename Symbol<br>Ctrl + K Ctrl + X    |    修剪尾随空格 Trim trailing whitespace<br>Ctrl + K M    |    更改文件语言 Change file language</p>
+<h2 id="编辑器管理-Editor-management"><a href="#编辑器管理-Editor-management" class="headerlink" title="编辑器管理 Editor management"></a>编辑器管理 Editor management</h2><p>按 Press    |    功能 Function<br>|–|–|<br>Ctrl+F4, Ctrl+W    |    关闭编辑器 Close editor<br>Ctrl+K F    |    关闭文件夹 Close folder<br>Ctrl+\    |    拆分编辑器 Split editor<br>Ctrl+ 1 / 2 / 3    |    聚焦到第1，第2或第3编辑器组 Focus into 1st, 2nd or 3rd editor group<br>Ctrl+K Ctrl+ ←/→    |    聚焦到上一个/下一个编辑器组 Focus into previous/next editor group<br>Ctrl+Shift+PgUp / PgDown    |    向左/向右移动编辑器 Move editor left/right<br>Ctrl+K ← / →    |    移动活动编辑器组 Move active editor group</p>
+<h2 id="文件管理-File-management"><a href="#文件管理-File-management" class="headerlink" title="文件管理 File management"></a>文件管理 File management</h2><p>按 Press    |    功能 Function<br>|–|–|<br>Ctrl+N    |    新文件 New File<br>Ctrl+O    |    打开文件… Open File…<br>Ctrl+S    |    保存 Save<br>Ctrl+Shift+S    |    另存为… Save As…<br>Ctrl+K S    |    全部保存 Save All<br>Ctrl+F4    |    关闭 Close<br>Ctrl+K Ctrl+W    |    关闭所有 Close All<br>Ctrl+Shift+T    |    重新打开关闭的编辑器 Reopen closed editor<br>Ctrl+K    |    输入保持打开 Enter Keep Open<br>Ctrl+Tab    |    打开下一个 Open next<br>Ctrl+Shift+Tab    |    打开上一个 Open previous<br>Ctrl+K P    |    复制活动文件的路径 Copy path of active file<br>Ctrl+K R    |    显示资源管理器中的活动文件 Reveal active file in Explorer<br>Ctrl+K O    |    显示新窗口/实例中的活动文件 Show active file in new window/instance</p>
+<h2 id="显示-Display"><a href="#显示-Display" class="headerlink" title="显示 Display"></a>显示 Display</h2><p>按 Press    |    功能 Function<br>|–|–|<br>F11    |    切换全屏 Toggle full screen<br>Shift+Alt+1    |    切换编辑器布局 Toggle editor layout<br>Ctrl+ = / -    |    放大/缩小 Zoom in/out<br>Ctrl+B    |    切换侧栏可见性 Toggle Sidebar visibility<br>Ctrl+Shift+E    |    显示浏览器/切换焦点 Show Explorer / Toggle focus<br>Ctrl+Shift+F    |    显示搜索 Show Search<br>Ctrl+Shift+G    |    显示Git Show Git<br>Ctrl+Shift+D    |    显示调试 Show Debug<br>Ctrl+Shift+X    |    显示扩展 Show Extensions<br>Ctrl+Shift+H    |    替换文件 Replace in files<br>Ctrl+Shift+J    |    切换搜索详细信息 Toggle Search details<br>Ctrl+Shift+C    |    打开新命令提示符/终端 Open new command prompt/terminal<br>Ctrl+Shift+U    |    显示输出面板 Show Output panel<br>Ctrl+Shift+V    |    切换Markdown预览 Toggle Markdown preview<br>Ctrl+K V    |    从旁边打开Markdown预览 Open Markdown preview to the side</p>
+<h2 id="调试-Debug"><a href="#调试-Debug" class="headerlink" title="调试 Debug"></a>调试 Debug</h2><p>按 Press    |    功能 Function<br>|–|–|<br>F9    |    切换断点 Toggle breakpoint<br>F5    |    开始/继续 Start/Continue<br>Shift+F5    |    停止 Stop<br>F11 / Shift+F11    |    下一步/上一步 Step into/out<br>F10    |    跳过 Step over<br>Ctrl+K Ctrl+I    |    显示悬停 Show hover</p>
+<p>##集成终端 Integrated terminal<br>按 Press    |    功能 Function<br>|–|–|<br>Ctrl+<code>|    显示集成终端 Show integrated terminal
+Ctrl+Shift+</code>    |    创建新终端 Create new terminal<br>Ctrl+Shift+C    |    复制选定 Copy selection<br>Ctrl+Shift+V    |    粘贴到活动端子 Paste into active terminal<br>Ctrl+↑ / ↓    |    向上/向下滚动 Scroll up/down<br>Shift+PgUp / PgDown    |    向上/向下滚动页面 Scroll page up/down<br>Ctrl+Home / End    |    滚动到顶部/底部 Scroll to top/bottom</p>
+<p>摘自：<a href="https://segmentfault.com/a/1190000007688656" target="_blank" rel="noopener">https://segmentfault.com/a/1190000007688656</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Mylitboy 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Mylitboy 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/VS-Code/" rel="tag"># VS Code</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/article/development/intellij-idea-key-map-introduction/" rel="next" title="Intellij IDEA 常用快捷键">
+                <i class="fa fa-chevron-left"></i> Intellij IDEA 常用快捷键
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/article/operation/centos-set-nginx-auto-start/" rel="prev" title="CentOS配置Nginx自启动">
+                CentOS配置Nginx自启动 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Mylitboy</p>
+              <p class="site-description motion-element" itemprop="description">积累点滴，成就梦想；<br>爱编程，爱生活。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#VSCode常用快捷键"><span class="nav-number">1.</span> <span class="nav-text">VSCode常用快捷键</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常用-General"><span class="nav-number">1.1.</span> <span class="nav-text">常用 General</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础编辑-Basic-editing"><span class="nav-number">1.2.</span> <span class="nav-text">基础编辑 Basic editing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导航-Navigation"><span class="nav-number">1.3.</span> <span class="nav-text">导航 Navigation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搜索和替换-Search-and-replace"><span class="nav-number">1.4.</span> <span class="nav-text">搜索和替换 Search and replace</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多光标和选择-Multi-cursor-and-selection"><span class="nav-number">1.5.</span> <span class="nav-text">多光标和选择 Multi-cursor and selection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#丰富的语言编辑-Rich-languages-editing"><span class="nav-number">1.6.</span> <span class="nav-text">丰富的语言编辑 Rich languages editing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编辑器管理-Editor-management"><span class="nav-number">1.7.</span> <span class="nav-text">编辑器管理 Editor management</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件管理-File-management"><span class="nav-number">1.8.</span> <span class="nav-text">文件管理 File management</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#显示-Display"><span class="nav-number">1.9.</span> <span class="nav-text">显示 Display</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调试-Debug"><span class="nav-number">1.10.</span> <span class="nav-text">调试 Debug</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mylitboy</span>
+
+  <a href="http://www.miitbeian.gov.cn/">浙ICP备16008288号</a> 
+  
+  
+
+  <br>
+  <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1273987384'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1273987384%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+
+  <script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<script>(function(){
+var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?a83273477505fc1fb7ffa93b032fa252":"https://jspassport.ssl.qhimg.com/11.0.1.js?a83273477505fc1fb7ffa93b032fa252";
+document.write('<script src="' + src + '" id="sozz"><\/script>');
+})();
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("OceRHliDNgLTXw4FDd6GdPny-gzGzoHsz", "6p03t3Gje3MxO8valqCDkNlS");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

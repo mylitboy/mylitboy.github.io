@@ -1,0 +1,2151 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Mylitboy, 麦粒橙">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="蓝牙Mesh概念介绍一个智能设备在未加入蓝牙Mesh网络之前称为Device，加入Mesh网络（Porvisioning过程）后，称为Node（节点）。每个Node可以包含多个Element（比如智能插排，每一个插孔都是一个Element），一个Element对应一个Unicast address（16bits，32767个地址，bit15=0）；每个Element可以包含多个Model（用来发送">
+<meta name="keywords" content="Mylitboy, 麦粒橙">
+<meta property="og:type" content="article">
+<meta property="og:title" content="蓝牙Mesh材料收集">
+<meta property="og:url" content="https://blog.mylitboy.com/article/iot/ble-sig-mesh-learn/index.html">
+<meta property="og:site_name" content="-麦粒橙-技术博客-">
+<meta property="og:description" content="蓝牙Mesh概念介绍一个智能设备在未加入蓝牙Mesh网络之前称为Device，加入Mesh网络（Porvisioning过程）后，称为Node（节点）。每个Node可以包含多个Element（比如智能插排，每一个插孔都是一个Element），一个Element对应一个Unicast address（16bits，32767个地址，bit15=0）；每个Element可以包含多个Model（用来发送">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1146526/201805/1146526-20180518133533803-1811626681.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1146526/201805/1146526-20180518133546774-241556587.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1146526/201805/1146526-20180518133601674-1667663686.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1146526/201805/1146526-20180518133611433-134392169.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1146526/201804/1146526-20180406182617048-541877096.png">
+<meta property="og:image" content="https://www.cnblogs.com/gexin/p/pic/pic_Segmented_acknowlegment.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1146526/201804/1146526-20180406182710333-2028183912.png">
+<meta property="og:image" content="https://www.cnblogs.com/gexin/p/pic/pic_state_transition.png">
+<meta property="og:image" content="https://www.cnblogs.com/gexin/p/pic/pic_acknowledge_get.png">
+<meta property="og:image" content="https://www.cnblogs.com/gexin/p/pic/pic_acknowledge_set.png">
+<meta property="og:image" content="https://www.cnblogs.com/gexin/p/pic/pic_unacknowledge_set.png">
+<meta property="og:image" content="https://www.cnblogs.com/gexin/p/pic/pic_acknowledge_set_publish.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1146526/201804/1146526-20180406182751828-643913599.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1146526/201806/1146526-20180603150151290-1045101615.png">
+<meta property="og:image" content="https://www.cnblogs.com/gexin/p/pic%5Cgeneric_provisioning_pdu.png">
+<meta property="og:image" content="https://www.cnblogs.com/gexin/p/pic%5Ctransaction_start_pdu.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1146526/201806/1146526-20180603150226740-477972718.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1146526/201806/1146526-20180603150244218-1486208743.png">
+<meta property="og:image" content="https://www.cnblogs.com/gexin/p/pic%5Cprovisioning_berarer_control.png">
+<meta property="og:image" content="https://www.cnblogs.com/gexin/p/pic%5CLink_Open_message.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1146526/201806/1146526-20180603150259372-1136051.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1146526/201806/1146526-20180603150308820-758916932.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1146526/201806/1146526-20180603150329293-1429794074.png">
+<meta property="og:updated_time" content="2018-12-11T14:35:47.303Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="蓝牙Mesh材料收集">
+<meta name="twitter:description" content="蓝牙Mesh概念介绍一个智能设备在未加入蓝牙Mesh网络之前称为Device，加入Mesh网络（Porvisioning过程）后，称为Node（节点）。每个Node可以包含多个Element（比如智能插排，每一个插孔都是一个Element），一个Element对应一个Unicast address（16bits，32767个地址，bit15=0）；每个Element可以包含多个Model（用来发送">
+<meta name="twitter:image" content="https://images2018.cnblogs.com/blog/1146526/201805/1146526-20180518133533803-1811626681.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://blog.mylitboy.com/article/iot/ble-sig-mesh-learn/">
+
+
+
+
+
+  <title>蓝牙Mesh材料收集 | -麦粒橙-技术博客-</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?4da59f76a7da6f6f09a404f9f4637848";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">-麦粒橙-技术博客-</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">积累点滴，成就梦想</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.mylitboy.com/article/iot/ble-sig-mesh-learn/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mylitboy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="-麦粒橙-技术博客-">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">蓝牙Mesh材料收集</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-11T17:35:52+00:00">
+                2018-12-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/IOT/" itemprop="url" rel="index">
+                    <span itemprop="name">IOT</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/article/iot/ble-sig-mesh-learn/" class="leancloud_visitors" data-flag-title="蓝牙Mesh材料收集">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="蓝牙Mesh概念介绍"><a href="#蓝牙Mesh概念介绍" class="headerlink" title="蓝牙Mesh概念介绍"></a>蓝牙Mesh概念介绍</h2><p>一个智能设备在未加入蓝牙Mesh网络之前称为<code>Device</code>，加入Mesh网络（Porvisioning过程）后，称为<code>Node</code>（节点）。每个Node可以包含多个<code>Element</code>（比如智能插排，每一个插孔都是一个Element），一个Element对应一个<code>Unicast address</code>（16bits，32767个地址，bit15=0）；每个Element可以包含多个<code>Model</code>（用来发送、接收和处理Message），每个Model对应一个<code>Model ID</code>（可以分SIG ModelID和Vendor Model ID），类似这个Model的地址。其中，<code>SIG Model ID</code>是16bits的，SIG组织定义的专用Model ID，SIG Model ID参考例子如下图所示，而<code>Vendor Model ID</code>是32bits的，由16bits的<code>Company ID</code>和16bits的Vendor-assigned Model ID组成。</p>
+<h2 id="Mesh网络概述"><a href="#Mesh网络概述" class="headerlink" title="Mesh网络概述"></a>Mesh网络概述</h2><p>蓝牙mesh网络是一种基于泛洪管理的mesh网络，消息是通过广播信道传递，收到消息的节点可以继续转发消息，这样就可以实现更远范围的消息传递。为了防止出现消息不受限制的转发传递，规定了以下两种方法来避免：</p>
+<ul>
+<li>节点不会转发之前收到的消息，当收到新的消息时，会首先在缓存中检查是否存在相同消息，若存在，则忽略新的消息。</li>
+<li>每个消息都会包含一个TTL（Time to Live）的字段，这是用来限制消息中继的次数，每次转发消息后，TTL的值就会减1，当TTL的值到达1时，消息就不会再次被中继。</li>
+</ul>
+<h3 id="网络和子网"><a href="#网络和子网" class="headerlink" title="网络和子网"></a>网络和子网</h3><p>共享以下几种网络资源的节点组成一个mesh网络:</p>
+<ul>
+<li>用来identify消息源地址及目的地址的网络地址</li>
+<li>Netwoek Key, 用来在网络层加密</li>
+<li>Application Key， 用来在access layer加密</li>
+<li>IV index</li>
+</ul>
+<blockquote>
+<p>IV Index 是一个32位的值，是一种共享网络资源，比如一个mesh网中的所有节点都共享相同的IV Index值。</p>
+<p>IV Index从<code>0x00000000</code>开始，在IV-Update-procedure过程中递增，并由特定的进程维护，以保证整个mesh网内共享相同的IV。</p>
+<p>IV Index在网络中通过Secure Network beacons 共享， 一个子网收到 IV-Update时，会处理并传播该update。传播是通过在子网中传输Secure Network beacons实现的。如果一个在主子网中的节点收到IV-update时，会将其传播到其他所有的子网。</p>
+<p>如果一个节点从网络中消失一段时间，该节点会扫描Secure Network beacons ，或者是使用IV Index Recovery procedure来重新设置其IV-Index的值。</p>
+</blockquote>
+<p>一个mesh网络中可以存在一个或多个子网（比如一个宾馆的所有节点构成一个mesh网络，每个房间的节点都构成一个子网），子网中的节点有着同样的Network Key，他们可以在网络层相互通讯。一个节点可以属于多个子网，即一个节点可以配置多个Network Key。在Provision阶段，一个节点会被配到一个子网中，可以通过Configuration Model将节点陪孩子到多个子网中。</p>
+<p>子网中有一类特殊的子网，被称为主子网，主子网是基于主NetKey的。主子网中的节点参与IV更新操作，并将IV值传递给其他子网。与之相对的是，其他组网中 的设备只是向子网中传播IV-Index。</p>
+<p>包含<strong>Configureation Client Model</strong>的节点来配置网络资源， 这类节点称之为<strong>Configuration Client</strong>。通常情况下，Provisioner 负责在Provision阶段给节点分配unicast address以保证不会有重复的地址。Configuration Client负责分配NetKey, AppKey以保证网络中的节点可以在网络层和access层通讯。</p>
+<h3 id="设备和节点-devices-amp-nodes"><a href="#设备和节点-devices-amp-nodes" class="headerlink" title="设备和节点 devices &amp; nodes"></a>设备和节点 devices &amp; nodes</h3><p>加入mesh网络的设备称之为节点，未配网设备称之为device。<strong> Provisioner</strong> 就是用来管理节点与未配网设备之间的消息传输。</p>
+<p>未配网的设备不能收发mesh消息，但是它可以通过广播消息告诉provisioner该设备的存在。provisioner可以将一个未配网设备接入网络使之成为网络节点。</p>
+<p>网络节点可以收发mesh消息，其是由<strong>Configuration Client</strong>来管理的（<strong>Configuration Client</strong>可以与<strong>Provisioner</strong>是同一个）。<strong>Configuration Client</strong>是配置节点之间如何传递消息。<strong>Configuration Client</strong>可以把节点从mesh网络中移除，使之成为未配网设备。</p>
+<h3 id="入网"><a href="#入网" class="headerlink" title="入网"></a>入网</h3><p>当设备被<strong>provisioner</strong>添加到网络时，就成为网络节点。设备的配网过程与传统的蓝牙点对点配对过程不同。设备配网过程是通过<strong>advertising bearer</strong> 或者<strong>point-to-point GATT-based bearer</strong>实现的。通过<strong>advertising bearer</strong> 配网的过程是被所有节点所支持的，而通过<strong>point-to-point GATT-based bearer</strong>配网允许智能手机这类设备成为配网者（provisioner）。</p>
+<h3 id="Mesh中的几个概念"><a href="#Mesh中的几个概念" class="headerlink" title="Mesh中的几个概念"></a>Mesh中的几个概念</h3><p>mesh网络结构使用以下几个概念：states、messages、bindings、element、addressing、models、publish-subscribe、mesh keys、association。</p>
+<h4 id="States（状态）"><a href="#States（状态）" class="headerlink" title="States（状态）"></a>States（状态）</h4><p>state是一个用来表示element状态的一个值。</p>
+<p>可以表现state的element称之为server。比如，灯控中，灯节点一般为server，其开关状态则是一个state， server根据收到的消息改变其状态。</p>
+<p>可以访问state的element称之为client。比如，灯控中的开关，可以通过发送开关消息给server，实现开关控制。</p>
+<p>包含多个值得状态称之为复合状态，比如灯的颜色会包含RGB等分量。</p>
+<h4 id="Bound-states（关联状态）"><a href="#Bound-states（关联状态）" class="headerlink" title="Bound states（关联状态）"></a>Bound states（关联状态）</h4><p>当一个状态关联另一个状态，其中一个改变，会导致另一个状态改变，这种状态就称之为关联状态。关联状态可以存在于一个或多个element的不同models之间。在灯控中，较为常见的关联状态是电平状态跟开关状态的关联，当电平变化到0时，会导致开关状态也变为关。</p>
+<h4 id="Messages（消息）"><a href="#Messages（消息）" class="headerlink" title="Messages（消息）"></a>Messages（消息）</h4><p>消息会作用于状态， 对于每个状态（state）都会定义一系列消息，这些消息被server支持并且可以被client用来获取并改变server的状态。server也可以主动发送自身状态的消息，比如状态改变时。</p>
+<p>消息包含操作码、相关的参数以及行为。操作码可以是1~3个字节，比如泰凌微的私有mesh就是用的三个字节（op[3]）表示，其中op[0]为操作码，op[1~2]表示厂商ID。一字节的操作码用于某些特殊情况，比如需要将允许的参数个数设置为最大时；2个操作码时标准的消息。</p>
+<p>一条包含操作码的消息的总长度是在下传输层决定的，这里可能会用的分段重组机制。为了最优化性能，我们应避免分段重组，最好将消息限制在一个分段长度以内。传输层允许最多11个字节的不分段消息，当使用一个字节操作码时，参数个数最多允许10个。当操作码为3个时，最多允许8个参数。</p>
+<p>传输层的分段重组机制最多允许32个分段，因此消息的最大长度是384个字节。除去MIC检验的四个字节，一个操作码的消息最多允许379个参数。</p>
+<p>消息可以是需要回应的，也可以是无需回应的。</p>
+<h4 id="Element"><a href="#Element" class="headerlink" title="Element"></a>Element</h4><p>element是节点中一个可寻址的实体，每个节点都至少有一个element，一个主element，多个附加element。element的数量和结构是固定的，在节点的生命周期中保持不变。</p>
+<p>主element使用节点在配网时的唯一地址（unicast address）寻址，每个附加element都使用子序列地址寻址。这些element地址允许节点识别节点内的收发消息。</p>
+<p>如果一个节点内，element的数量和结构发生了变化，比如在固件升级时，那么需要再次配网。</p>
+<p>models中的消息是根据消息的操作码和element地址来分发的。</p>
+<p>一个element中不允许包含多个使用相同消息的model，当一个element中的多个model使用相同消息时，会造成过载。为了避免过载，一个节点内允许多个element存在，这样具备相同消息的model放在不同element中就可以了。</p>
+<p>比如，对于一个灯设备来说，可能存在两个灯泡，每个都实现了亮度控制。这时就需要节点包含两个element来分别表示两个灯泡，当收到亮度命令时，节点会根据element的地址来决定哪个灯泡亮度应被修改。</p>
+<h4 id="Addresses-地址"><a href="#Addresses-地址" class="headerlink" title="Addresses 地址"></a>Addresses 地址</h4><p>有三种类型地址，唯一地址（unicast address）、虚拟地址、组地址。</p>
+<p>唯一地址是在配网阶段被分配给节点的主element，每个mesh网络可以有32767个唯一地址。</p>
+<p>虚拟地址可以代表多个element，每个虚拟地址表示一个标签化的UUID。每个被发往UUID的消息都在完整检验值中包含可整个标签UUID，以验证消息。为了避免检查每个已知的UUID，我们使用UUID的哈希值。共有16384个哈希值，每个都代表了一族虚拟地址。在虚拟地址中，只使用了16384个哈希值，因此每个哈希值都可以表示上百万个UUID，因此虚拟地址的数量可以被认为很大。</p>
+<p>组地址可以表示多个element，每个mesh网络中共有16384个组地址。有一些固定的组地址用来访问所有主element。共有256个固定组地址，16128个动态分配的组地址。</p>
+<h4 id="Models"><a href="#Models" class="headerlink" title="Models"></a>Models</h4><p>Model定义了一个节点的基础功能，一个节点可能包含多个Model。一个Model定义了其所需要的状态、作用于状态的消息、以及相关行为。</p>
+<p>mesh应用使用了client-server结构，通讯使用“发布-订阅”机制。鉴于mesh网络的特点，以及配网的行为，应用不是简单的“端到端”模式。应用是定义在client model、server model和control model之中。</p>
+<ul>
+<li><strong>Server model:</strong> 由一个或者多个element中的多个state组成。Server Model 定义了一族主消息，收发主消息时element的行为，还有收发消息之后的附加行为。</li>
+<li><strong>Client model：</strong>定义了一族消息，client可以用来请求、改变相关server的状态。client没有state.</li>
+<li><strong>Control model:</strong> 包含client功能用来与其他server通讯，也包含server功能用来与其他client通讯。一个control model可以包含控制逻辑，即与其他model相互作用时，该model的一些规则及表现。</li>
+</ul>
+<p>一个简单的设备可以包含server、client、control model。下图表示了一个control model例子。</p>
+<p><img src="https://images2018.cnblogs.com/blog/1146526/201805/1146526-20180518133533803-1811626681.png" alt="img"></p>
+<p>照明控制器是一个control model实现，照明控制器需要作为client来控制灯设备（或传感器），也需要作为一个server被智能手机等设备控制。这样一个照明控制器可以存在于传感器中、灯设备中或者是一个独立的设备中。</p>
+<p>Models可以定义网络节点的功能，比如秘钥管理、地址分配、消息中继灯。Models也定义了设备的表现，比如电源控制、照明控制、传感器数据收集。有的节点只实现了中继中能，比如代理节点。</p>
+<p>一个消息可以应用于多个不同的models，消息的表现在每个model中都是相同的。</p>
+<p>Model的特性是不可改变的，不能向一个model移除或者添加行为。如果一个新的行为必须要添加，则需要产生一个新的model。model支持扩展，新的model扩展原model时，会继承原model的相关行为。</p>
+<p>一个element所包含的的model决定了该element的表现。</p>
+<p>Model可以被SIG定义（SIG Model）也可以被厂商（Vendor Model）定义，model被唯一的标识符所识别，可以是16bit（SIG Model）或者是32bi（Vendor Model）t的一个值。</p>
+<p>下面的例子中，一个设备包含了两个element，主element中包含了一个model，该model是扩展自附属model的，在附属model的基础上添加了一个新的状态。</p>
+<p>由于State_X1与State_X2可以接收相同的消息，因此必须要放在两个element中。</p>
+<p><img src="https://images2018.cnblogs.com/blog/1146526/201805/1146526-20180518133546774-241556587.png" alt="img"></p>
+<h3 id="智能插座例子"><a href="#智能插座例子" class="headerlink" title="智能插座例子"></a>智能插座例子</h3><p><img src="https://images2018.cnblogs.com/blog/1146526/201805/1146526-20180518133601674-1667663686.png" alt="img"></p>
+<p>如上图所示，该设备由两个插座组成，包含两个element，分别代表两个插座。每个element都分配一个唯一地址。</p>
+<p>每个element的功能由<strong>Generic Power Level Server model</strong>定义，该model定义了一族状态以及作用于状态的消息。</p>
+<p>Generic Power Level Set 消息被传送到设备上用来控制电平，然后根据element的地址，来控制对应的插座。</p>
+<p>插座也可以被实现了<strong>Generic Level Client model</strong>的设备控制，该model简单的设置电平，插座的实际控制是通过状态关联实现的。在每个插座中，<strong>Generic Power Actual state</strong> 是与<strong>Generic Level state</strong>关联的。<strong>Generic Level Client</strong> 向<strong>Generic Level Server</strong> 发送电平设置消息，然后<strong>Generic Level</strong>改变，与此同时<strong>Generic Power Actual state</strong> 也会改变，Power Actual state实际控制插座电源。</p>
+<p>element可以报告状态，在插座的例子中，每个插座都可以汇报电源状态以统计耗电量。能耗是通过<strong>Sensor Server model</strong>定义的消息实现的，每个消息都有个element地址，这个地址唯一识别插座。</p>
+<p><img src="https://images2018.cnblogs.com/blog/1146526/201805/1146526-20180518133611433-134392169.png" alt="img"></p>
+<p>目录</p>
+<ul>
+<li><ol start="3">
+<li>Mesh Networking</li>
+</ol>
+<ul>
+<li><a href="https://www.cnblogs.com/gexin/p/8599143.html#bearers-%E6%89%BF%E8%BD%BD%E5%B1%82" target="_blank" rel="noopener">3.1 Bearers 承载层</a></li>
+<li><a href="https://www.cnblogs.com/gexin/p/8599143.html#network-layer-%E7%BD%91%E7%BB%9C%E5%B1%82" target="_blank" rel="noopener">3.2 Network Layer 网络层</a></li>
+<li><a href="https://www.cnblogs.com/gexin/p/8599143.html#address-validity-%E5%9C%B0%E5%9D%80%E6%9C%89%E6%95%88%E6%80%A7" target="_blank" rel="noopener">3.2.3 Address validity 地址有效性</a></li>
+<li><a href="https://www.cnblogs.com/gexin/p/8599143.html#network-pdu" target="_blank" rel="noopener">3.2.4 Network PDU</a></li>
+<li><a href="https://www.cnblogs.com/gexin/p/8599143.html#network-layer-behavior" target="_blank" rel="noopener">3.2.6 Network layer behavior</a></li>
+<li><a href="https://www.cnblogs.com/gexin/p/8599143.html#lower-transport-layer-%E4%B8%8B%E4%BC%A0%E8%BE%93%E5%B1%82" target="_blank" rel="noopener">3.3 Lower Transport Layer 下传输层</a></li>
+<li><a href="https://www.cnblogs.com/gexin/p/8599143.html#upper-trnsport-layer-%E4%B8%8A%E4%BC%A0%E8%BE%93%E5%B1%82" target="_blank" rel="noopener">3.4 Upper trnsport layer 上传输层</a></li>
+<li><a href="https://www.cnblogs.com/gexin/p/8599143.html#access-layer-%E8%AE%BF%E9%97%AE%E5%B1%82" target="_blank" rel="noopener">3.5 Access Layer 访问层</a></li>
+<li><a href="https://www.cnblogs.com/gexin/p/8599143.html#mesh-security" target="_blank" rel="noopener">3.6 Mesh Security</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="3-Mesh-Networking"><a href="#3-Mesh-Networking" class="headerlink" title="3. Mesh Networking"></a>3. Mesh Networking</h2><p>本部分以mesh网络的分层结构的顺序自下而上地介绍mesh网络。mesh网络结构如下所示：</p>
+<p><img src="https://images2018.cnblogs.com/blog/1146526/201804/1146526-20180406182617048-541877096.png" alt="img"></p>
+<h3 id="3-1-Bearers-承载层"><a href="#3-1-Bearers-承载层" class="headerlink" title="3.1 Bearers 承载层"></a>3.1 Bearers 承载层</h3><p>本规范定义了两种承载层：</p>
+<ul>
+<li><strong>Advertising bearer</strong></li>
+<li><strong>GATT bearer</strong></li>
+</ul>
+<h4 id="3-1-1-Advertising-bearer"><a href="#3-1-1-Advertising-bearer" class="headerlink" title="3.1.1 Advertising bearer"></a>3.1.1 Advertising bearer</h4><p>使用 advertising bearer 时，mesh数据包可以使用Advertising Data发送，BLE advertising PDU使用 Mesh Message AD Type标识。</p>
+<table>
+<thead>
+<tr>
+<th>Length</th>
+<th>AD Type</th>
+<th>Contens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0xXX</td>
+<td>Mesh Message</td>
+<td>network PDU</td>
+</tr>
+</tbody>
+</table>
+<p>任何使用Mesh Message AD Type的广播消息应该是无需连接（ non-connectable）、无需扫描的（ non-scannable） 非直接广告事件。如果一个节点在一个连接的或者扫描的广告事件中收到了一个Mesh Message AD Type 消息， 那么该消息会被忽略。</p>
+<p>一个只支持 advertising bearer的设备应该使用尽可能高的占空比（接近100%）来扫描消息，以避免遗失消息或者Provisioning PDUs。</p>
+<p>所有设备都应该支持GAP Observer role 和 GAP Broadcaster role。</p>
+<h4 id="3-1-2-GATT-bearer"><a href="#3-1-2-GATT-bearer" class="headerlink" title="3.1.2 GATT bearer"></a>3.1.2 GATT bearer</h4><p>GATT bearer可以使那些不支持advertising bearer的设备可以加入到mesh网中，GATT bearer 使用Proxy protocol通过GATT连接在设备之间转发、接受Proxy PDUs。</p>
+<p>The GATT bearer uses a characteristic to write to and receive notifications of mesh messages using the attribute protocol.（这句话没理解什么意思）</p>
+<p>GATT bearer定义了两种角色，分别是Client 和 Server。GATT Bearer Server应该实例化一个且只能一个 Mesh Proxy Service，GATT Bearer Client 应该支持Mesh Proxy Service。</p>
+<h3 id="3-2-Network-Layer-网络层"><a href="#3-2-Network-Layer-网络层" class="headerlink" title="3.2 Network Layer 网络层"></a>3.2 Network Layer 网络层</h3><p>网路层定义了可以使Lower Transport PDUs被bearer层转发的 Network PDU格式。网络层将从input interface收到的incoming消息进行解密（decrypt）、授权(anthenticate)并转发向output interface 或是更高的层级；将outgoing消息进行加密、授权并转发到其他网络接口。</p>
+<h4 id="3-2-1-字节序"><a href="#3-2-1-字节序" class="headerlink" title="3.2.1 字节序"></a>3.2.1 字节序</h4><p>该层使用大端字节序</p>
+<h4 id="3-2-2-地址"><a href="#3-2-2-地址" class="headerlink" title="3.2.2 地址"></a>3.2.2 地址</h4><p>地址是16bit长度的值(两个字节），如下所示：</p>
+<table>
+<thead>
+<tr>
+<th>地址二进制值</th>
+<th>地址类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0b0000000000000000</td>
+<td>未分配地址</td>
+</tr>
+<tr>
+<td>0b0xxxxxxxxxxxxxxx（0x0000除外）</td>
+<td>unicast address</td>
+</tr>
+<tr>
+<td>0b10xxxxxxxxxxxxxx</td>
+<td>virtual address</td>
+</tr>
+<tr>
+<td>ob11xxxxxxxxxxxxxx</td>
+<td>group address</td>
+</tr>
+</tbody>
+</table>
+<h5 id="3-2-2-1-未分配地址"><a href="#3-2-2-1-未分配地址" class="headerlink" title="3.2.2.1 未分配地址"></a>3.2.2.1 未分配地址</h5><p>未分配地址是当一个节点的element还没有配置或者还没有分配地址时的一个地址。当不需要发布消息时，可以将publish address设置为unassigned address。</p>
+<h5 id="3-2-2-2-Unicast-address"><a href="#3-2-2-2-Unicast-address" class="headerlink" title="3.2.2.2 Unicast address"></a>3.2.2.2 Unicast address</h5><p>unicast address是分配给每一个element的唯一地址，取值范围是0x0001到0x7FFF。unicast address在一个节点的生命周期中保持不变。unicast地址被用作消息的源地址，也可能用于消息的目的地址。如果一个消息是发往一个unicast 地址，那么该消息最多被一个element处理。</p>
+<h5 id="3-2-2-3-虚拟地址"><a href="#3-2-2-3-虚拟地址" class="headerlink" title="3.2.2.3 虚拟地址"></a>3.2.2.3 虚拟地址</h5><p>虚拟地址代表一系列的目的地址，每一个虚拟地址逻辑上代表一个128-bit的标签UUID。一个或多个element可能发布或订阅一个标签UUID， 标签UUID不被传递，应该被当作消息完整性检查值的附加域。</p>
+<p>虚拟地址的15bit被设置为1, 14bit设置为0, 13~0bit是一个hash值。这个哈希值派生于UUID。</p>
+<p>当一个发往虚拟地址的Access消息收到时，每一个匹配该虚拟地址的UUID都会被upper transport层用来当作附加唉的数据作为认证消息的一部分。</p>
+<p>控制消息(control message)不可以使用虚拟地址。</p>
+<h5 id="3-2-2-4-group-address"><a href="#3-2-2-4-group-address" class="headerlink" title="3.2.2.4 group address"></a>3.2.2.4 group address</h5><p>Group address 是一个被写入0个或多个element的地址。地址位的15bit 14bit均被设置为1.</p>
+<p>Group address只能被用作目的地址，被发往group address的消息被发送到所有订阅该group address的modale interfaces。</p>
+<p>group address分为两种，一种是动态分配的，另一种是固定的。</p>
+<table>
+<thead>
+<tr>
+<th>地址值</th>
+<th>Fixed Group Address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0xFF00-0XFFFB</td>
+<td>RFU</td>
+</tr>
+<tr>
+<td>0xFFFC</td>
+<td>all-proxies</td>
+</tr>
+<tr>
+<td>0xFFFD</td>
+<td>all-friends</td>
+</tr>
+<tr>
+<td>0xFFFE</td>
+<td>all-relays</td>
+</tr>
+<tr>
+<td>0xFFFF</td>
+<td>all-nodes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-2-3-Address-validity-地址有效性"><a href="#3-2-3-Address-validity-地址有效性" class="headerlink" title="3.2.3 Address validity 地址有效性"></a>3.2.3 Address validity 地址有效性</h3><table>
+<thead>
+<tr>
+<th>地址类型</th>
+<th>源地址</th>
+<th>control message 目的地址</th>
+<th>access message 目的地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>未分配地址</td>
+<td>NO</td>
+<td>NO</td>
+<td>NO</td>
+</tr>
+<tr>
+<td>unicast address</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>virtual address</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>group address</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+</tbody>
+</table>
+<p>下表表示地址是否可以使用device key 或者是 application key：</p>
+<table>
+<thead>
+<tr>
+<th>地址类型</th>
+<th>Device Key 有效</th>
+<th>Application Key 有效</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>unassigned address</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>unicast address</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>virtual address</td>
+<td>no</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>group address</td>
+<td>no</td>
+<td>yes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-2-4-Network-PDU"><a href="#3-2-4-Network-PDU" class="headerlink" title="3.2.4 Network PDU"></a>3.2.4 Network PDU</h3><p>Network PDU的结构定义如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>filed</th>
+<th>bits</th>
+<th>notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IVI</td>
+<td>1</td>
+<td>Least significant bit of IV Index</td>
+</tr>
+<tr>
+<td>NID</td>
+<td>7</td>
+<td>Value derived from the NetKey used to identify the Encryption Key and Privacy Key used to secure this PDU</td>
+</tr>
+<tr>
+<td>CTL</td>
+<td>1</td>
+<td>Network control</td>
+</tr>
+<tr>
+<td>TTL</td>
+<td>7</td>
+<td>Time to live</td>
+</tr>
+<tr>
+<td>SEQ</td>
+<td>24</td>
+<td>Sequence Number</td>
+</tr>
+<tr>
+<td>SRC</td>
+<td>16</td>
+<td>源地址</td>
+</tr>
+<tr>
+<td>DST</td>
+<td>16</td>
+<td>目的地址</td>
+</tr>
+<tr>
+<td>TransportPDU</td>
+<td>8 to 128</td>
+<td>传输单元</td>
+</tr>
+<tr>
+<td>NetMIC</td>
+<td>32 or 64</td>
+<td>网络层信息完整性检查</td>
+</tr>
+</tbody>
+</table>
+<h4 id="3-2-4-1-IVI"><a href="#3-2-4-1-IVI" class="headerlink" title="3.2.4.1 IVI"></a>3.2.4.1 IVI</h4><p>IVI是 用来认证加密Network PDU的IV Index的最低位。</p>
+<h4 id="3-2-4-2-NID"><a href="#3-2-4-2-NID" class="headerlink" title="3.2.4.2 NID"></a>3.2.4.2 NID</h4><p>NID域包含一个7bit的 network identifier，用来提供一种简单的方式查找加密认证Network PDU所使用的Encryption Key和Privacy Key。</p>
+<p>NID是派生于Network Key，与Encryption Key和Privacy Key关联。</p>
+<h4 id="3-2-4-3-CTL"><a href="#3-2-4-3-CTL" class="headerlink" title="3.2.4.3 CTL"></a>3.2.4.3 CTL</h4><p>CTL位判断消息是否是控制消息，当该位是1时，表示消息是control message。该位为0,则表示消息位access message。</p>
+<p>当CTL为0时，NetMIC是32-bit的值，下传输层包含access message。</p>
+<p>当CTL为1时，NetMIC是64-bit的值，下传输层包含control message。</p>
+<h4 id="3-2-4-4-TTL"><a href="#3-2-4-4-TTL" class="headerlink" title="3.2.4.4 TTL"></a>3.2.4.4 TTL</h4><p>TTL是一个7-bit的值，表示消息跳转的次数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0=没有被中继且不会被中继。</span><br><span class="line">1=已经被中继过，不会再次中继</span><br><span class="line">2~126 = 可能被中继过，仍将继续中继</span><br><span class="line">127= 没有被中继，可以被中继</span><br></pre></td></tr></table></figure>
+<h4 id="3-2-4-5-SEQ"><a href="#3-2-4-5-SEQ" class="headerlink" title="3.2.4.5 SEQ"></a>3.2.4.5 SEQ</h4><p>该成员是一个24-bit的值，由IV index组成，对于每一个network PDU来说，这是一个由节点产生的唯一的值。</p>
+<h4 id="3-2-4-6-SRC"><a href="#3-2-4-6-SRC" class="headerlink" title="3.2.4.6 SRC"></a>3.2.4.6 SRC</h4><p>源地址，必须是unicast address。可以根据源地址识别产生该消息的element。</p>
+<p>源地址由产生该消息的element设置，并且在传输过程中不会被中继节点接触（可以理解为对中继节点不可见？）。</p>
+<h4 id="3-2-4-7-DST"><a href="#3-2-4-7-DST" class="headerlink" title="3.2.4.7 DST"></a>3.2.4.7 DST</h4><p>目的地址，16-bit值，可以时unicast address、virtual address、group address。</p>
+<p>在传输过程中，不会被中继节点的网络层接触（理解为对中继节点网络层不可见）。</p>
+<h4 id="3-2-4-8-Transport-PDU"><a href="#3-2-4-8-Transport-PDU" class="headerlink" title="3.2.4.8 Transport PDU"></a>3.2.4.8 Transport PDU</h4><p>传输的字节数据，当CTL设置为1时，该域最大96 bit。当CTL为0时，最大长度为128 Bits。</p>
+<p>Transport PDU 是被产生该消息的下传输层设置，不能被网络层改变。</p>
+<h4 id="3-2-4-9-NetMIC"><a href="#3-2-4-9-NetMIC" class="headerlink" title="3.2.4.9 NetMIC"></a>3.2.4.9 NetMIC</h4><p>该域长度取决于CTL，当CTL为0时，该域为64-bit；当CTL为1时，该域为32-bit。</p>
+<p>NetMIC用于确认DST和Transport PDU没有被破坏。</p>
+<p>NetMIC会被每一个传输、中继该消息的节点的网络层设置。</p>
+<h4 id="3-2-5-Network-Interfaces"><a href="#3-2-5-Network-Interfaces" class="headerlink" title="3.2.5 Network Interfaces"></a>3.2.5 Network Interfaces</h4><p>网络层支持通过多个承载层来收发消息，每个bearer可以通过network interfaces与网络层连接。同一个节点内部的不同element间的消息传送是通过local interfaces实现的。</p>
+<p>举个例子，比如一个节点可能存在三个interfaces，一个用来通过advertising bearers收发消息；另外两个通过GATT bearers收发消息。</p>
+<p>Interface 可以提供filter（过滤器）用来控制消息的进出规则。</p>
+<h4 id="3-2-5-1-Interface-input-filter"><a href="#3-2-5-1-Interface-input-filter" class="headerlink" title="3.2.5.1 Interface input filter"></a>3.2.5.1 Interface input filter</h4><p>用来确定进来的消息是丢弃还是传送到网络层。</p>
+<h4 id="3-2-5-2-Interface-output-filter"><a href="#3-2-5-2-Interface-output-filter" class="headerlink" title="3.2.5.2 Interface output filter"></a>3.2.5.2 Interface output filter</h4><p>用来确定出去的消息是被丢弃还是被传送到承载层。</p>
+<p>当TTL的值为1时，会丢弃所有要传送到承载层的消息。</p>
+<h4 id="3-2-5-3-Local-network-interface"><a href="#3-2-5-3-Local-network-interface" class="headerlink" title="3.2.5.3 Local network interface"></a>3.2.5.3 Local network interface</h4><p>这用来在一个节点内部的不同element之间传送消息。当该interface受到消息时，会将消息传送到节点内的所有element.</p>
+<h4 id="3-2-5-4-Advertising-bearer-network-interfaces"><a href="#3-2-5-4-Advertising-bearer-network-interfaces" class="headerlink" title="3.2.5.4 Advertising bearer network interfaces"></a>3.2.5.4 Advertising bearer network interfaces</h4><p>该interface允许通过advertising bearer传送消息。</p>
+<p>当收到一个消息且消息没有被标记中继消息时，Advertising bearer network interface会使用Network Transmit state的值在advertisng bearer上传送该消息。</p>
+<p>当收到一个消息且被标记为中继消息，Advertising bearer network interface会使用Relay Transmit state的值在advertisng bearer上传送该消息。</p>
+<h3 id="3-2-6-Network-layer-behavior"><a href="#3-2-6-Network-layer-behavior" class="headerlink" title="3.2.6 Network layer behavior"></a>3.2.6 Network layer behavior</h3><h4 id="3-2-6-1-Relay-feature"><a href="#3-2-6-1-Relay-feature" class="headerlink" title="3.2.6.1 Relay feature"></a>3.2.6.1 Relay feature</h4><p>中继特性指的是将从advertising bearer收到的Network PDU进行转发。该特性是选配的，可以启用或者不启用。如果支持代理特性，那么节点应该同时支持GATT和advertising两种bearer(承载层)。</p>
+<h4 id="3-2-6-2-Proxy-feature"><a href="#3-2-6-2-Proxy-feature" class="headerlink" title="3.2.6.2 Proxy feature"></a>3.2.6.2 Proxy feature</h4><p>用来转发在GATT和advertising bearer之间传送的消息。</p>
+<h4 id="3-2-6-3-接收network-PDU"><a href="#3-2-6-3-接收network-PDU" class="headerlink" title="3.2.6.3 接收network PDU"></a>3.2.6.3 接收network PDU</h4><p>消息是通过network interface从bearer layer 传送到network layer。网络层可以对消息标记一些附加的标签，以供后续使用。</p>
+<p>当网络层收到消息时，会首先检查NID的值是否匹配已知的NID值，若不匹配则忽略该消息。若可以匹配已知的NID，则节点会根据相匹配的Network Key来认证该消息。如果认证成功，而且SRC、DST是有效的，且网络层消息缓存中没有该消息，那么消息会被传送到下传输层被继续处理。</p>
+<p>消息被转发时，其中的IV index应该与收到时保持一致。</p>
+<p>如果从advertising bearer传送过来的消息被传送到下传输层处理，且节点支持中继特性（并使能），TTL不小于2，目的地址不是本节点的unicast address，那么TTL的值减1，Network PDU被标记为relay，Network PDU被重发向所有连接到advertising bearer的网络接口（network interfaces）。建议在收到Network PDU后，加一个任意时间的小延时，再进行转发。这样可以避免多次中继同时发生。</p>
+<p>如果从GATT承载层传过来的消息被传送到下传输层处理，节点支持并使能了代理特性，TTL不小于2，目的地址不是本节点的unicast，那么TTL减1，并且Network PDU重发到所有的network interfaces。</p>
+<p>如果从advertsing bearer传过来的消息被下传输层处理，并且代理特性被支持使能，TTL不小于2，目的地址不是本节点的unicast address，那么TTL减1，并且Network PDU将会被重发到所有连接GATT bearer的网络接口。</p>
+<h3 id="3-3-Lower-Transport-Layer-下传输层"><a href="#3-3-Lower-Transport-Layer-下传输层" class="headerlink" title="3.3 Lower Transport Layer 下传输层"></a>3.3 Lower Transport Layer 下传输层</h3><p>下传输层从上传输层获取Upper Transport PDU，并将其转发至对等的下传输层。这些Upper Transport PDU可以被装进一个单独的Lowwer Transport PDU，也可能被分割为多个。当下传输层受到消息时，会处理Lower Transport PDUs，将重组分片的PDU，一旦完成便将PDU发送到上传输层。</p>
+<h4 id="3-3-1-字节序"><a href="#3-3-1-字节序" class="headerlink" title="3.3.1 字节序"></a>3.3.1 字节序</h4><p>该层使用大端</p>
+<h4 id="3-3-2-Lower-Transport-PDU"><a href="#3-3-2-Lower-Transport-PDU" class="headerlink" title="3.3.2 Lower Transport PDU"></a>3.3.2 Lower Transport PDU</h4><p>Lower Transport PDU 用来转发上传输层PDU到其他节点。下传输层PDU最高位是SEG域，SEG用来确定PDU是否被分片。如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>CTL</th>
+<th>SEG</th>
+<th>Lower Transport PDU</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>未分片access message</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>分片的access message</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>未分片的control message</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>分片的control message</td>
+</tr>
+</tbody>
+</table>
+<h4 id="3-3-2-1-Unsegmented-Access-message"><a href="#3-3-2-1-Unsegmented-Access-message" class="headerlink" title="3.3.2.1 Unsegmented Access message"></a>3.3.2.1 Unsegmented Access message</h4><p>数据格式如下：</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Size(bits)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SEG</td>
+<td>1</td>
+<td>0=Unsegmented, 1=segmented</td>
+</tr>
+<tr>
+<td>AKF</td>
+<td>1</td>
+<td>Applicatoin Key Flag</td>
+</tr>
+<tr>
+<td>AID</td>
+<td>6</td>
+<td>application Key identifier</td>
+</tr>
+<tr>
+<td>Upper Transport Access PDU</td>
+<td>40 to 120</td>
+<td>上传输层PDU</td>
+</tr>
+</tbody>
+</table>
+<p>AKF和AID是被上传输层根据application key 或 device key设置的，用来加密access payload。</p>
+<p>这时消息是没有SZMIC域的，因为上传输层的TransMIC是32-bit的，SZMIC是0，也就不需要单独设置了。</p>
+<h4 id="3-3-2-2-Segmented-Access-message"><a href="#3-3-2-2-Segmented-Access-message" class="headerlink" title="3.3.2.2 Segmented Access message"></a>3.3.2.2 Segmented Access message</h4><p>数据格式如下：</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Size(bits)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SEG</td>
+<td>1</td>
+<td>0=Unsegmented, 1=segmented</td>
+</tr>
+<tr>
+<td>AKF</td>
+<td>1</td>
+<td>Applicatoin Key Flag</td>
+</tr>
+<tr>
+<td>AID</td>
+<td>6</td>
+<td>application Key identifier</td>
+</tr>
+<tr>
+<td>SZMIC</td>
+<td>1</td>
+<td>Size of TransMIC</td>
+</tr>
+<tr>
+<td>SegZero</td>
+<td>13</td>
+<td>Least signification bits of SeqAuth</td>
+</tr>
+<tr>
+<td>SegO</td>
+<td>5</td>
+<td>Segment Offset number</td>
+</tr>
+<tr>
+<td>SegN</td>
+<td>5</td>
+<td>Last Segment number</td>
+</tr>
+<tr>
+<td>Segment m</td>
+<td>8 to 96</td>
+<td>Segment m of the Upper Transport Access PDU</td>
+</tr>
+</tbody>
+</table>
+<p>SZMIC表示上传输层PDU中TransMIC的size。0表示TransMIC是32-bit，1表示64-bit。</p>
+<p>AKF和AID是被上传输层根据application key 或 device key设置的，用来加密access payload。</p>
+<p>SeqZero是被上传输层设置的。</p>
+<p>SegO域说明这是第几个分片，SegN表示总共有多少个分片。</p>
+<p>Segment m就表示第m个分片的上传层PDU数据。</p>
+<p>Access message中除了最后一个分片，其他所有分片都应该是12字节的（12<em>m 到 12</em>m+11）。最后一个分片就是从12*m到PDU最后</p>
+<p><strong>Access Message的分片应该是12个字节划分一次</strong></p>
+<p>同一个上传输层PDU分片产生的下传输层PDU应该具有相同的AKF, AID, SZMIC, SeqZero, and SegN。</p>
+<h4 id="3-3-2-3-Unsegmented-Control-Message"><a href="#3-3-2-3-Unsegmented-Control-Message" class="headerlink" title="3.3.2.3 Unsegmented Control Message"></a>3.3.2.3 Unsegmented Control Message</h4><p>Unsegmented Control Message 用来传输<em>Segmented Acknowledgment message</em>或者是Control message。</p>
+<p>结构如下所示：</p>
+<table>
+<thead>
+<tr>
+<th>Feild</th>
+<th>Size(bits)</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SEG</td>
+<td>1</td>
+<td>0=Unsegmented, 1=segmented</td>
+</tr>
+<tr>
+<td>Opcode</td>
+<td>7</td>
+<td>0x00 = Segment Acknowlegment ; 0x01 to 0x7F = Opcode of Transport Control message</td>
+</tr>
+<tr>
+<td>Paramenters</td>
+<td>0 to 88</td>
+<td>Parameters for the Transport Control message</td>
+</tr>
+</tbody>
+</table>
+<h5 id="3-3-2-3-1-Segmented-Acknowledgment-message"><a href="#3-3-2-3-1-Segmented-Acknowledgment-message" class="headerlink" title="3.3.2.3.1 Segmented Acknowledgment message"></a>3.3.2.3.1 Segmented Acknowledgment message</h5><p>Segmented Acknowledgment message是下传输层用来确认分片收到的。</p>
+<p><img src="https://www.cnblogs.com/gexin/p/pic/pic_Segmented_acknowlegment.png" alt="img"></p>
+<table>
+<thead>
+<tr>
+<th>Feild</th>
+<th>Size(bits)</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SEG</td>
+<td>1</td>
+<td>0=Unsegmented, 1=segmented</td>
+</tr>
+<tr>
+<td>Opcode</td>
+<td>7</td>
+<td>0x00 = segment acknowledgment message</td>
+</tr>
+<tr>
+<td>OBO</td>
+<td>1</td>
+<td>Friend on behalf of a Low Power node</td>
+</tr>
+<tr>
+<td>SegZero</td>
+<td>13</td>
+<td>SeqZero of the Upper Transport PDU</td>
+</tr>
+<tr>
+<td>RFU</td>
+<td>2</td>
+<td>Reserved for Future Use</td>
+</tr>
+<tr>
+<td>BlockAck</td>
+<td>32</td>
+<td>Block acknowledgment for segments</td>
+</tr>
+</tbody>
+</table>
+<p>SEG为0</p>
+<p>Opcode为0x00</p>
+<p>如果消息是被目的地址的节点收到，则OBO为0；如果消息的目的地址的节点是一个低功耗节点，那么消息是被节点的友好节点收到的，这时OBO为1。</p>
+<p>BlockAck用来表示分片收到的情况，最低位 bit 0 代表segment 0，最高位代表segment 31。如果bit n被设置为1，说明segment被节点收到了（或被低功耗节点的友好节点收到了）。</p>
+<h4 id="3-3-2-4-Segmented-Control-message"><a href="#3-3-2-4-Segmented-Control-message" class="headerlink" title="3.3.2.4 Segmented Control message"></a>3.3.2.4 Segmented Control message</h4><p>数据格式如下：</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Size(bits)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SEG</td>
+<td>1</td>
+<td>0=Unsegmented, 1=segmented</td>
+</tr>
+<tr>
+<td>Opcode</td>
+<td>7</td>
+<td>0x00 = Segment Acknowlegment ; 0x01 to 0x7F = Opcode of Transport Control message</td>
+</tr>
+<tr>
+<td>RFU</td>
+<td>1</td>
+<td>留给以后使用，保留位</td>
+</tr>
+<tr>
+<td>SegZero</td>
+<td>13</td>
+<td>Least signification bits of SeqAuth</td>
+</tr>
+<tr>
+<td>SegO</td>
+<td>5</td>
+<td>Segment Offset number</td>
+</tr>
+<tr>
+<td>SegN</td>
+<td>5</td>
+<td>Last Segment number</td>
+</tr>
+<tr>
+<td>Segment m</td>
+<td>8 to 64</td>
+<td>Segment m of the Upper Transport Control PDU</td>
+</tr>
+</tbody>
+</table>
+<p>SEG设为1</p>
+<p>Opcode 被上传输层设置，用来表示parameters的格式。</p>
+<p>The SeqZero field shall be set by the upper transport layer.</p>
+<p>The Segment m field shall be set to the subset of octets from the Upper Transport Control PDU. Segment<br>m shall be octets 8<em>m to 8</em>m+7, except for the last segment where it is 8*m to the end of the message.<strong>也就是说控制消息的分片长度是8个字节。</strong></p>
+<p>来自同一个上传输层PDU的分片具有一致的Opcode, SeqZero, and SegN。</p>
+<h4 id="3-3-3-分片和重组"><a href="#3-3-3-分片和重组" class="headerlink" title="3.3.3 分片和重组"></a>3.3.3 分片和重组</h4><p>为了传输大于15个字节的上传输层PDU，下传输层会将PDU分片、重组，然后被发送到同级的下传输层上。传输分片时，会使用block acknowledgment message来减小下传输层所传输信息的大小。</p>
+<p><img src="https://images2018.cnblogs.com/blog/1146526/201804/1146526-20180406182710333-2028183912.png" alt="img"></p>
+<h5 id="3-3-3-1-分割"><a href="#3-3-3-1-分割" class="headerlink" title="3.3.3.1 分割"></a>3.3.3.1 分割</h5><p>下传输层可以将来自上传输层的PDU分片发送，需要注意的是，下传输层一次只能发送来自同一个上传输层PDU的分片。也就是说，只有当当前上传输层PDU的分片全部发送完必，并且收到对应的acknowledgment之后，才会发送下一个上传输层PDU的分片。还有一种情况就是，当前PDU分片发送被取消，这时会继续发送下一个PDU分片的发送。</p>
+<p>当上传输层PDU可以装入一个未分片的下传输层PDU时，那么下传输层可以直接使用未分片喜爱哦戏传输该消息。如果上传输层PDU装入一个单一的分片下传输层PDU（就是只分了1个segment的分片消息），那么消息就可以使用单一分片的消息来传输该消息。</p>
+<p>分片信息发送会有acknowledgment确认，但是未分片消息是没有的。因此一个使用单一分片来发送上传输层PDU比起使用未分片消息更加有效。</p>
+<p>Each segment of the Upper Transport Access PDU shall be <strong>12 octets</strong> long with the exception of the last segment, which may be shorter</p>
+<p>Each segment of the Upper Transport Control PDU shall be <strong>8 octets</strong> long with the exception of the last segment, which may be shorter.</p>
+<p>分片的消息是通过SegO来识别的，通过SeqAuth来连接并认证。来源于同一个上传输层PDU的分片消息，都有小爱嗯他的IV index和SeqAuth值，这涌来加密和认证上传输层PDU。</p>
+<p>SeqAuth是由IV index和第一个分片的sequence number(SEQ)组成的，是一个56-bit的值，其中IV index是其中的高位的字节，sequence number(SEQ)是其中的低位。只有最低13 bits(就是SeqZero）被包含进了分片消息。当重组一个完整的分片消息时，SeqAuth值可以从IV index、SeqZero和SEQ所派生出来。</p>
+<p>举个例子，如果收到消息的SEQ是0x6471262，IV index是0x58437AF2，SeqZero是0x1849，那么SeqAuth就是0x58437AF2645849。</p>
+<h5 id="3-3-3-2-重组"><a href="#3-3-3-2-重组" class="headerlink" title="3.3.3.2 重组"></a>3.3.3.2 重组</h5><p>收到分片消息时，接收节点将会检查SeqAuth以确认对应的上传输层PDU是否被收到过。如果分片消息没有被收到过，那么接收的设备将会根据消息中的SegN字段来分配足够的内存，以存储上传输层的各个分片信息。</p>
+<p>如果节点不支持低功耗特性，并且消息是发往一个unicast address，而此时节点不能接收该上传输层PDU（可能因为节点正忙，或是资源不足以重组该消息），那么节点将会通知该消息的源节点，通过发送一个BlockAck 0X00000000。</p>
+<p>如果分片消息正在被处理，SegO字段决定分片重组时的位置，接收者将会更新BlockAck值来报告此分片发送成功。</p>
+<h5 id="3-3-3-3-segmentation-behavior-分片表现"><a href="#3-3-3-3-segmentation-behavior-分片表现" class="headerlink" title="3.3.3.3 segmentation behavior 分片表现"></a>3.3.3.3 segmentation behavior 分片表现</h5><p>如果消息的目的地址是一个unicast address，那么下传输层会等待一个目的节点的Segment Acknoeledgment message，如果目的节点是一个低功耗节点，那么Segment Acknoeledgment message由其友好节点发送。</p>
+<p>如果消息是被发往一个group address或者是一个虚拟地址的，那么下传输层会发送所有上传输层PDU对应的分片下传输层PDU。<strong>建议多次发送下传输层PDU，发送间隙引入随即的延时</strong></p>
+<p>被发往group或者虚拟地址的上传输层PDU，不会收到acknowledgment，因此发送之后的状态是不知道。因此多发送几次可以确保成功发送的概率。</p>
+<p>当下传输层PDU发送时，一个定时器将会被设置用以等待Segment Acknowledgment message ，定时器的最小值为<em>200+50\</em>TTL*毫秒。</p>
+<p>当收到一个确认分片收到的Segment Acknowledgment message时，下传输层将会重置定时器，并重新发送未确认的下传输层PDU分片。当收到Segment Acknowledgment message确认所有的分片都已成功接收后，上传输层PDU就发送成功啦。如果收到的Segment Acknowledgment message中BlockAck是0x00000000，那么上传输层会取消该消息的发送并通知更高层级该事件。</p>
+<p>如果没有收到Segment Acknowledgment message确认，分片的下传输层PDU至少应该重传送两次。弱国下传输层在所有分片确认前停止了重传，那么上传输层PDU消息就被取消了。</p>
+<h5 id="3-3-3-4-Reassembly-behavior-重组表现"><a href="#3-3-3-4-Reassembly-behavior-重组表现" class="headerlink" title="3.3.3.4 Reassembly behavior 重组表现"></a>3.3.3.4 Reassembly behavior 重组表现</h5><p>下传输层有一个sequence authentication value（SeqAuth），每个源节点设备有一个与之对应的block acknowledgment value。</p>
+<p>如果下传输层收到一个分片消息，但是消息的SeqAuth值比当前的sequence authentication value值小，那么就会忽略该消息。如果下传输层收到一个新的消息，那么就会将消息中的SeqAuth保存为新的sequence authentication value。</p>
+<p>Sequence authentication value逻辑上包含了IV index，因此如果下传输层收到了的消息是使用之前的IV index的，那么该消息的SeqAuth值就会比当前的sequence authentication value小。</p>
+<p>如果下传输层收到一个分片消息，但是节点不能接收该多片消息（可能因为节点繁忙或是内存不足以容纳多篇消息等原因），如果消息是发往一个unicast address，那么下传输层就会返回一个Segment Acknowledgment message，其中 BlockAck 设置为 0x00000000。</p>
+<p>如果下传输层收到的分片消息中SeqAuth值比当前的sequence authentication value要大，那么下传输层就会启动一个“不完整计时器”，该定时器定义了下传输层等待具备相同SeqAuth值消息的时间，最小为10秒。</p>
+<p>如果下传输层收到的分片消息中SeqAuth值比当前的sequence authentication value要大，同时消息的目的地址是一个unicast address，那么下传输层就会启动一个acknowledgment定时器，该定时器定义了下传输层发送Segment Acknowledgment message的时间，最小设置为 <em>150+50\</em>TTL*毫秒。</p>
+<p>如果下传输层收到另一个对应当前 sequence authentication value的消息片，且此时acknowledgment定时器未活动，那么就会重启acknowledgment定时器。</p>
+<p>如果下传输层收到对应当前 sequence authentication value的消息片，且此时不完整计时器正在活动，那么重启该定时器。</p>
+<p>下传输层会在block acknowledgment value中标记每一个片段，以便于后面将其发送给源节点。</p>
+<p>当某个消息的所有片段都收到后，下传输层会发送确认消息给源节点，并去取消不完整定时器和acknowledgment定时器，然后向上传输层发送重组消息。</p>
+<p>如果acknowledgment定时器超时，下传输层会发送一个Segment Acknowledgment message给源节点。</p>
+<p>如果不完整计时器超时，下传输层会认为消息接受失败，取消acknowledgment定时器。任何分片消息会被忽略。</p>
+<p>如果下传输层收到了其他消息片段，而此时分片的消息已经全部收到了，那么将会给源节点发送Segment Acknowledgment message。如果节点是作为一个低功耗节点的友好节点存在的，那么Segment Acknowledgment message中的OBO字段会被设置为1。表示消息已经缓存在友好节点的队列中等待低功耗节点来轮询获取了。反之，则OBO设置为1。</p>
+<h4 id="3-3-4-Friend-Queue"><a href="#3-3-4-Friend-Queue" class="headerlink" title="3.3.4 Friend Queue"></a>3.3.4 Friend Queue</h4><p>友好节点对每一个与其建立联系的低功耗节点都有一个友好队列（Friend Queue），这个友好队列就存储了以低功耗节点为目的地址的消息，等待低功耗节点来轮询请求。</p>
+<p>当一个友好节点收到消息，且该消息是发往一个与之建立联系的低功耗节点，消息中的TTL字段不小于2，那么TTL的值减1，然后消息存储在该友好节点的友好队列中。</p>
+<p>如果消息是分片的，消息会先在上传输层完成重组，友好节点向源节点发送Segment Acknowledgment message确认消息，然后才会将消息存储到友好队列中。</p>
+<p>如果友好队列满了，并且新消息需要被保存，那么最老的消息将会被覆盖，以为新消息腾出地方。（<strong>这句话可能理解的不对，原文是下面一段话</strong>）</p>
+<p>If the Friend Queue is full and a new message needs to be stored that is not a Friend Update message, the oldest entries other than a Friend Update message shall be discarded to make room for the new message.</p>
+<p>如果要被存储的消息是一个 Segment Acknowledgment 消息，并且友好队列中已经有一个 Segment Acknowledgment 消息了，两消息的源地址、目的地址一样而且用着相同的SeqAuth值，但是IV或者是sequence number比老消息更小，那么老的消息将会被清除。</p>
+<p>如果友好节点需要security更新，那么要向友好队列中添加一个Friend Update消息。</p>
+<p>低功耗节点向友好节点发送Friend Poll消息时，若此时友好队列为空，那么需要友好节点向友好队列中添加一个Friend Update 消息，然后此消息就可以回应给低功耗节点啦。</p>
+<h3 id="3-4-Upper-trnsport-layer-上传输层"><a href="#3-4-Upper-trnsport-layer-上传输层" class="headerlink" title="3.4 Upper trnsport layer 上传输层"></a>3.4 Upper trnsport layer 上传输层</h3><p>上传输层从访问层（access layer ）获取消息或者是自己生成上传输层控制消息（upper transport layer Control message ），并将这些消息传送给同级的上传输层。</p>
+<p>对于从访问层获取的消息，消息的加密和认证是使用application key实现的。这允许上传输层认证收到的消息。</p>
+<p>传输层控制消息是上传输层内部产生的，只能在网络层加密和认证。</p>
+<h4 id="3-4-1-字节序"><a href="#3-4-1-字节序" class="headerlink" title="3.4.1 字节序"></a>3.4.1 字节序</h4><p>大端字节序</p>
+<h4 id="3-4-2-Upper-Transport-Access-PDU"><a href="#3-4-2-Upper-Transport-Access-PDU" class="headerlink" title="3.4.2 Upper Transport Access PDU"></a>3.4.2 Upper Transport Access PDU</h4><p>在Network PDU中，当CTL字段是0时表示Upper Transport Access PDU中装的是从访问层获取的access payload。</p>
+<p>access payload 使用application key或者device key加密，加密的access payload和相关的信息完整性检查值都放在Upper Transport Access PDU中。</p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Octects</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Encrypted Access Payload</td>
+<td>1 to 380</td>
+<td>The encrypted access payload</td>
+</tr>
+<tr>
+<td>TransMIC</td>
+<td>4 or 8</td>
+<td>The message integrity check value for the access payload</td>
+</tr>
+</tbody>
+</table>
+<h5 id="3-4-2-1-Encrypted-access-payload"><a href="#3-4-2-1-Encrypted-access-payload" class="headerlink" title="3.4.2.1 Encrypted access payload"></a>3.4.2.1 Encrypted access payload</h5><p>Access payload是访问层提供的，如果TranMIC是32-bit的，access payload最长可以是380字节。如果TranMIC是64-bit的，access payload可以最长374字节。在上传输层中，access payload是不可见的，这个字段的所有信息都不能使用。</p>
+<h5 id="3-4-2-2-TransMIC"><a href="#3-4-2-2-TransMIC" class="headerlink" title="3.4.2.2 TransMIC"></a>3.4.2.2 TransMIC</h5><p>信息完整性检查（ Message Integrity Check for Transport ，TransMIC）是一个32位或64位的数，用来认证access payload是否被破坏。对于分片消息（SEG=1），TransMIC的长度是由下传输层PDU中的SZMIC 字段决定的。对于未分片的消息，数据信息的TransMIC是32位的。</p>
+<p><strong>注意：控制消息是没有TransMIC的</strong></p>
+<h4 id="3-4-3-Upper-Transport-Control-PDU"><a href="#3-4-3-Upper-Transport-Control-PDU" class="headerlink" title="3.4.3 Upper Transport Control PDU"></a>3.4.3 Upper Transport Control PDU</h4><p>若CTL位是1，那么上传输层就装载一个控制消息。传输层控制消息有一个7位的操作码，该操作码用来定义参数的格式。操作码没有包含在参数字段中，但是在每一个分片或未分片的控制消息，其下传输层PDU中都有操作码。</p>
+<p>下传输层可能会将消息分割个几个小的PDU，以便于在网络层传输。因此建议根据下面这个表的格式，保持传输控制PDU的大小，表中的值代表根据包的数量而建议的参数域最大的长度。（本段理解可能不对，原文如下）</p>
+<p>The lower transport layer may segment messages into smaller PDUs for delivery over the network layer. It is therefore recommended to keep Transport Control PDU payload size as reflected in Table 3.16, where the values represent the maximum useful parameter field sizes depending on the number of packets.</p>
+<table>
+<thead>
+<tr>
+<th>Numbers of Packets</th>
+<th>Transpotr Control PDU Payload Size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>11(Unsegmented)</td>
+</tr>
+<tr>
+<td>1</td>
+<td>8(segmented)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>16</td>
+</tr>
+<tr>
+<td>3</td>
+<td>24</td>
+</tr>
+<tr>
+<td>n</td>
+<td>n*8</td>
+</tr>
+<tr>
+<td>32</td>
+<td>256</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Upper Transport Control PDU的最大长度是256字节</strong></p>
+<h4 id="3-4-4-Upper-transport-layer-behavior"><a href="#3-4-4-Upper-transport-layer-behavior" class="headerlink" title="3.4.4 Upper transport layer behavior"></a>3.4.4 Upper transport layer behavior</h4><h5 id="3-4-4-1-Transmitting-an-access-payload"><a href="#3-4-4-1-Transmitting-an-access-payload" class="headerlink" title="3.4.4.1 Transmitting an access payload"></a>3.4.4.1 Transmitting an access payload</h5><p>所有access message在application key或是device key的上下文中被传递。access payload使用application key 或者 device key 加密，TransMIC设置信息完整性检查的值。</p>
+<p>Sequence number(SEQ) 会被发配到消息中，在被下传输层中分片的消息中，SEQ是SeqAuth的底24位。</p>
+<p>下传输层PDU中的AKF和AID字段是根据application key 或者device key来设置的。如果一个application key被使用，那么AKF被设置为1，并且AID字段被设置为application key identifier（AID）。如果device key被使用，那么AKF字段被设置为0，且AID设置i为0b000000。</p>
+<h5 id="3-4-4-2-Receiving-an-Upper-Transport-PDU"><a href="#3-4-4-2-Receiving-an-Upper-Transport-PDU" class="headerlink" title="3.4.4.2 Receiving an Upper Transport PDU"></a>3.4.4.2 Receiving an Upper Transport PDU</h5><p>收到Receiving an Upper Transport Access PDU时，access payload会被解密，TransMIC会被用来认证消息。如果PDU通过认证并通过完整性检查，该消息将会传送到access层。</p>
+<h4 id="3-4-5-Transport-Control-messages"><a href="#3-4-5-Transport-Control-messages" class="headerlink" title="3.4.5 Transport Control messages"></a>3.4.5 Transport Control messages</h4><p>Transport Control messages可以通过分片的控制消息或是单一的未分片控制信息传送，不管用哪种方式，每个消息都有一个7位的操作码用来确定参数域的格式。每一个传输控制消息都应该以最小数量的下传输层PDU传送。</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Opcode</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x00</td>
+<td>–</td>
+<td>Reserved for lower transport layer</td>
+</tr>
+<tr>
+<td>0x01</td>
+<td>Friend Poll</td>
+<td>Sent by a Low Power node to its Friend node to request any messages that it has stored for the Low Power node</td>
+</tr>
+<tr>
+<td>0x02</td>
+<td>Friend Update</td>
+<td>Sent by a Friend node to a Low Power node to inform it about security updates</td>
+</tr>
+<tr>
+<td>0x03</td>
+<td>Friend Request</td>
+<td>Sent by a Low Power node the all-friends fixed group address to start to find a friend</td>
+</tr>
+<tr>
+<td>0x04</td>
+<td>Friend Offer</td>
+<td>Sent by a Friend node to a Low Power node to offer to become its friend</td>
+</tr>
+<tr>
+<td>0x05</td>
+<td>Friend Clear</td>
+<td>Sent to a Friend node to inform a previous friend of a Low Power node about the removal of a friendship</td>
+</tr>
+<tr>
+<td>0x06</td>
+<td>Friend Clear Confirm</td>
+<td>Sent from a previous friend to Friend node to confirm that a prior friend relationship has been removed</td>
+</tr>
+<tr>
+<td>0x07</td>
+<td>Friend Subscription List Add</td>
+<td>Sent to a Friend node to add one or more addresses to the Friend Subscription List</td>
+</tr>
+<tr>
+<td>0x08</td>
+<td>Friend Subscription List Remove</td>
+<td>Sent to a Friend node to remove one or more addresses from the Friend Subscription List</td>
+</tr>
+<tr>
+<td>0x09</td>
+<td>Friend Subscription List Confirm</td>
+<td>Sent by a Friend node to confirm Friend Subscription List updates</td>
+</tr>
+<tr>
+<td>0x0A</td>
+<td>Heartbeat</td>
+<td>Sent by a node to let other nodes determine topology of a subnet</td>
+</tr>
+<tr>
+<td>0x0B–0x7F</td>
+<td>RFU</td>
+<td>Reserved for Future Use</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-5-Access-Layer-访问层"><a href="#3-5-Access-Layer-访问层" class="headerlink" title="3.5 Access Layer 访问层"></a>3.5 Access Layer 访问层</h3><h4 id="3-5-1-字节序"><a href="#3-5-1-字节序" class="headerlink" title="3.5.1 字节序"></a>3.5.1 字节序</h4><p>从本层级开始，字节序为小端字节序</p>
+<h4 id="3-5-2-Model-identifier-模型识别器"><a href="#3-5-2-Model-identifier-模型识别器" class="headerlink" title="3.5.2 Model identifier 模型识别器"></a>3.5.2 Model identifier 模型识别器</h4><p>Model可以被唯一的识别器所识别，蓝牙官方组织定义的模型识别器是16位的，厂商定义的模型识别器是32位的，在SIG的基础上加入了16位的厂商信息。</p>
+<h4 id="3-5-3-Access-Payload"><a href="#3-5-3-Access-Payload" class="headerlink" title="3.5.3 Access Payload"></a>3.5.3 Access Payload</h4><p>格式定义如下：</p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Size (octets)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Opcode</td>
+<td>1, 2, or 3</td>
+<td>Operation Code</td>
+</tr>
+<tr>
+<td>Parameters</td>
+<td>0 to 379</td>
+<td>Application Parameters</td>
+</tr>
+</tbody>
+</table>
+<p>access payload最多被分割为32个12字节的片段（包含TranMIC字段），若TranMIC是4个字节长度，那么payload最长可以到达380字节，如果此时操作码只有一个字节的话，那么parameter字段的最大长度是379。</p>
+<p>下传输层可能会将PDU分割为多个小的数据包以便于承载层传输，下表列出了根据包的数量而建议的常用的包大小。</p>
+<table>
+<thead>
+<tr>
+<th>Nunber 0f Packets</th>
+<th>maxium useful access payload size(octets) with 32-bit TransMIC</th>
+<th>maxium useful access payload size(octets) with 64-bit TransMIC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>11(unsegmented)</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>1</td>
+<td>8(segmented)</td>
+<td>4(segmented)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>20</td>
+<td>16</td>
+</tr>
+<tr>
+<td>3</td>
+<td>32</td>
+<td>28</td>
+</tr>
+<tr>
+<td>n</td>
+<td>(n*12)-4</td>
+<td>(n*12)-8</td>
+</tr>
+<tr>
+<td>32</td>
+<td>380</td>
+<td>376</td>
+</tr>
+</tbody>
+</table>
+<h5 id="3-5-3-1-操作码"><a href="#3-5-3-1-操作码" class="headerlink" title="3.5.3.1 操作码"></a>3.5.3.1 操作码</h5><p>操作码可以是1、2或3个字节序列，操作码的第一个字节决定了使用字节的数量。</p>
+<p>如果操作码第一个字节的最高位是0,那么操作码只包含一个字节；如果最高两位是0b10，那么操作码包含2个字节；如果最高的两位是0b11,那么操作码包含3个字节。</p>
+<table>
+<thead>
+<tr>
+<th>操作码第一个字节格式</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0b0xxxxxxx</td>
+<td>1-octet Opcodes</td>
+</tr>
+<tr>
+<td>0b01111111</td>
+<td>保留，以后使用</td>
+</tr>
+<tr>
+<td>0b10xxxxxx</td>
+<td>2-octet Opcodes</td>
+</tr>
+<tr>
+<td>0b11xxxxxx</td>
+<td>3-octet Opcodes</td>
+</tr>
+</tbody>
+</table>
+<p>1-octet 操作码是蓝牙SIG定义的应用操作码，最多可以定义127个1-octet操作码，0x7F是保留给未来使用的。</p>
+<p>2-octet 也是蓝牙SIG定义的应用操作码，最多可以定位16384个2-octet 操作码。</p>
+<p>3-octet操作码是供制造商使用的操作码，每一个公司共有64个3-octet操作码。</p>
+<h5 id="3-5-3-2-应用参数"><a href="#3-5-3-2-应用参数" class="headerlink" title="3.5.3.2 应用参数"></a>3.5.3.2 应用参数</h5><p>参数字段是对应每个操作码定义了，后面会详细介绍，参数字段可以是0个字节长度。</p>
+<h4 id="3-5-4-Access-layer-behavior"><a href="#3-5-4-Access-layer-behavior" class="headerlink" title="3.5.4 Access layer behavior"></a>3.5.4 Access layer behavior</h4><h5 id="3-5-4-1-发送access-message"><a href="#3-5-4-1-发送access-message" class="headerlink" title="3.5.4.1 发送access message"></a>3.5.4.1 发送access message</h5><p>消息被一个模型发往一个目的地址，目的地址可以时unicast address、group address或者是虚拟地址。</p>
+<p>消息源地址必须是产生该消息的element的unicast address。</p>
+<p>TTL字段可以被应用设置为它所希望消息在节点之间跳转的次数。如果没有设置TTL，那么访问层将会使用默认的TTL。</p>
+<p>访问层不保证消息的成功传送，每个模型都应该决定消息是否应该被重复传以及潜在重复数据的处理。</p>
+<p>如果要发送的消息是对已接收消息的回复，若已接收消息是发往unicast address的，那么应该在发响应消息包时使用20到50毫秒的随机延时。假如已接收消息是发往虚拟地址或者group address的，那么发送响应消息包应该假如20到500毫秒的随机延时。通过假如随机延时，可以降低多节点同时响应消息的概率，因而降低消息冲突。</p>
+<p>因为网络中的所有节点以及其他蓝牙设备是共享有限的带宽的，因此有必要观察节点的流量。在10秒的窗口内，一个节点应该产生小于100个下传输层PDU。</p>
+<h5 id="3-5-4-2-接收access-message"><a href="#3-5-4-2-接收access-message" class="headerlink" title="3.5.4.2 接收access message"></a>3.5.4.2 接收access message</h5><p>以下几点全部满足时，消息会被传送到model来处理，</p>
+<ul>
+<li>操作码属于目的地址模型的element</li>
+<li>目的地址设置为模型element的unicast address或者是的element订阅的group address 或是virtual address。</li>
+<li>model绑定到了用于消息传输的application key或是device key。</li>
+</ul>
+<h5 id="3-5-4-3-Security-considerations-安全注意事项"><a href="#3-5-4-3-Security-considerations-安全注意事项" class="headerlink" title="3.5.4.3 Security considerations 安全注意事项"></a>3.5.4.3 Security considerations 安全注意事项</h5><p>消息是被上传输层就加密和认证的，一个节点产生的消息应该使用为本Model配置的application key 或者是device key。</p>
+<p>响应消息应该使用与相关消息相同的key。</p>
+<h5 id="3-5-4-4-Message-error-procedure"><a href="#3-5-4-4-Message-error-procedure" class="headerlink" title="3.5.4.4 Message error procedure"></a>3.5.4.4 Message error procedure</h5><p>当收到一个不能解析的消息时，就会忽略该消息。</p>
+<p>消息不能解析包含以下几种情况：</p>
+<ul>
+<li>application opcode 不能被接受消息的element理解</li>
+<li>access message 长度不正确</li>
+<li>application parameters包含当前被禁用的值</li>
+</ul>
+<h4 id="3-5-5-Unacknowledged-and-acknowledged-messages"><a href="#3-5-5-Unacknowledged-and-acknowledged-messages" class="headerlink" title="3.5.5 Unacknowledged and acknowledged messages"></a>3.5.5 Unacknowledged and acknowledged messages</h4><p>在访问层，消息可以被定义为Unacknowledged或者是acknowledged。</p>
+<h5 id="3-5-5-1-Unacknowledged-message"><a href="#3-5-5-1-Unacknowledged-message" class="headerlink" title="3.5.5.1 Unacknowledged message"></a>3.5.5.1 Unacknowledged message</h5><p>当应用觉得同级节点需要知道状态变化时，会发送一个status message。状态消息被发往与state关联的模型的发布地址，Unacknowledged message是没有回应消息的，因此不会知道已发送的消息是否被成功发送或是是否被处理。</p>
+<h5 id="3-5-5-2-Acknowledged-message"><a href="#3-5-5-2-Acknowledged-message" class="headerlink" title="3.5.5.2 Acknowledged message"></a>3.5.5.2 Acknowledged message</h5><p>Acknowledged message会被每一个接收该消息的节点回应，回应消息通常是status message。如果在一定时间内没有收到回应消息，会重发消息，等待时间是由application确定的。</p>
+<p>如果消息是被发往多个节点的，比如目的地址group address，节点可能不知道有多少接收节点会回应该消息。不建议向所有节点发送Acknowledged message。为了增加成功发送的概率，发送节点需要确定消息重发次数。</p>
+<p>如果发送节点没有收到回应消息，那么节点会认为消息没有发送。Acknowledged message超时时间应该最少设置为30秒，值由应用设置。当一个Acknowledged message发送给model，他应该发送一个回应消息以确认该消息被接收。回应消息可以包含状态信息，回应消息是 unacknowlwdged message。回应消息的目的地址应该被设置为Acknowledged message的源地址。如果Acknowledged message的TTL字段是0，那么也建议回应消息的TTL也设置为0。</p>
+<h4 id="3-5-6-Publish-and-subscribe发布与订阅"><a href="#3-5-6-Publish-and-subscribe发布与订阅" class="headerlink" title="3.5.6 Publish and subscribe发布与订阅"></a>3.5.6 Publish and subscribe发布与订阅</h4><p>发布与订阅是通过目的地址来实现的，目的地址的配置管理在更高层级的规范中。</p>
+<h5 id="3-5-6-1-Publish"><a href="#3-5-6-1-Publish" class="headerlink" title="3.5.6.1 Publish"></a>3.5.6.1 Publish</h5><p>一个Model发布数据如果它向目的地址转发一个无关消息，消息可以被转发到的地址可以是unicast address, group address或者是virtual address。节点中的没有个Model都有一个发布地址。</p>
+<h6 id="3-5-6-1-1-State-transitions-状态转变"><a href="#3-5-6-1-1-State-transitions-状态转变" class="headerlink" title="3.5.6.1.1 State transitions 状态转变"></a>3.5.6.1.1 State transitions 状态转变</h6><p>element的状态可以立刻转变或是经历一段时间转变为新的状态，如下图所示。</p>
+<p><img src="https://www.cnblogs.com/gexin/p/pic/pic_state_transition.png" alt="img"></p>
+<p>状态从初始状态转变为新状态所需要的时间被称为转变时间。从当前状态到目标状态的时间成为保持时间。当收到一个设置状态的消息时，新的值不会立即生效，状态值会被存储起来作为目标状态。一个状态消息可以在任何时间被发出，状态消息中会包含当前的状态。</p>
+<h6 id="3-5-6-1-2-State-change-publishing-状态转变发布"><a href="#3-5-6-1-2-State-change-publishing-状态转变发布" class="headerlink" title="3.5.6.1.2 State change publishing 状态转变发布"></a>3.5.6.1.2 State change publishing 状态转变发布</h6><p>发布状态转变的消息是通过设置Model Publication state来实现的。当model使能发布时，状态改变完成时就会发送相关的状态改变信息。对于状态转变时间超过2秒的情况，建议增加一个状态发布在状态转变开始后1秒内。</p>
+<h6 id="3-5-6-1-3-周期发布"><a href="#3-5-6-1-3-周期发布" class="headerlink" title="3.5.6.1.3 周期发布"></a>3.5.6.1.3 周期发布</h6><p>model可以配置为周期性的发送状态消息，无论状态是否变化。这是通过 Publish Period实现的。当Publish Period设为非零值时，状态消息会周期性发布。</p>
+<h5 id="3-5-6-2-Subscribe-订阅"><a href="#3-5-6-2-Subscribe-订阅" class="headerlink" title="3.5.6.2 Subscribe 订阅"></a>3.5.6.2 Subscribe 订阅</h5><p>每个model都有一个或多个订阅列表，订阅列表中包含一个或多个地址。订阅地址可以是group address 或者是virtual address。</p>
+<h4 id="3-5-7-Example-message-sequence-charts"><a href="#3-5-7-Example-message-sequence-charts" class="headerlink" title="3.5.7 Example message sequence charts"></a>3.5.7 Example message sequence charts</h4><h5 id="3-5-7-1-Acknowledged-Get"><a href="#3-5-7-1-Acknowledged-Get" class="headerlink" title="3.5.7.1 Acknowledged Get"></a>3.5.7.1 Acknowledged Get</h5><p>下图说明了一个client获取server的状态</p>
+<p><img src="https://www.cnblogs.com/gexin/p/pic/pic_acknowledge_get.png" alt="img"></p>
+<h5 id="3-5-7-2-Acknowledged-Set"><a href="#3-5-7-2-Acknowledged-Set" class="headerlink" title="3.5.7.2 Acknowledged Set"></a>3.5.7.2 Acknowledged Set</h5><p>下图说明client使用Acknowledged Set消息对server的状态进行设置，client会收到server的回应消息，如果server设置了状态发布，那么可以发布状态消息。如果client订阅了server的发布地址，那么client端会收到两个状态消息。</p>
+<p><img src="https://www.cnblogs.com/gexin/p/pic/pic_acknowledge_set.png" alt="img"></p>
+<h5 id="3-5-7-3-Unacknowledged-Set"><a href="#3-5-7-3-Unacknowledged-Set" class="headerlink" title="3.5.7.3 Unacknowledged Set"></a>3.5.7.3 Unacknowledged Set</h5><p>client可以使用Unacknowledged Set消息设置server的状态，如下图所示。</p>
+<p><img src="https://www.cnblogs.com/gexin/p/pic/pic_unacknowledge_set.png" alt="img"></p>
+<h5 id="3-5-7-4-Acknowledged-set-with-periodic-publishing"><a href="#3-5-7-4-Acknowledged-set-with-periodic-publishing" class="headerlink" title="3.5.7.4 Acknowledged set with periodic publishing"></a>3.5.7.4 Acknowledged set with periodic publishing</h5><p>client使用Acknowledged Set消息对server的状态进行设置，server启用周期性状态发布。</p>
+<p><img src="https://www.cnblogs.com/gexin/p/pic/pic_acknowledge_set_publish.png" alt="img"></p>
+<h3 id="3-6-Mesh-Security"><a href="#3-6-Mesh-Security" class="headerlink" title="3.6 Mesh Security"></a>3.6 Mesh Security</h3><h4 id="3-6-1-Endianness-字节序"><a href="#3-6-1-Endianness-字节序" class="headerlink" title="3.6.1 Endianness 字节序"></a>3.6.1 Endianness 字节序</h4><p>在本层使用多字节字段使用大端字节序。</p>
+<h4 id="3-6-2-Security-toolbox"><a href="#3-6-2-Security-toolbox" class="headerlink" title="3.6.2 Security toolbox"></a>3.6.2 Security toolbox</h4><h5 id="3-6-2-1-Encrption-function-加密函数"><a href="#3-6-2-1-Encrption-function-加密函数" class="headerlink" title="3.6.2.1 Encrption function 加密函数"></a>3.6.2.1 Encrption function 加密函数</h5><p>加密函数具体可以查看《Volume 3, Part H, Section 2.2.1 of the Core Specification》，其形式如下：</p>
+<p>ciphertext=e(key,plaintext)ciphertext=e(key,plaintext)</p>
+<h5 id="3-6-2-2-CMAC-function"><a href="#3-6-2-2-CMAC-function" class="headerlink" title="3.6.2.2 CMAC function"></a>3.6.2.2 CMAC function</h5><p>Cipher-based Message Authentication Code (CMAC) 使用AES-128作为block cipher函数，也被称为 AES-CMAC。</p>
+<p>MAC=AES−CMACk(m)MAC=AES−CMACk(m)</p>
+<p>其中k是一个128-bit的key值，m是需要被认证的可变长度的数据。</p>
+<h5 id="3-6-2-3-CCM-funtion"><a href="#3-6-2-3-CCM-funtion" class="headerlink" title="3.6.2.3 CCM funtion"></a>3.6.2.3 CCM funtion</h5><p>RFC3610 defines the AES Counter with CBC-MAC (CCM) (see Volume 6, Part E, Section 1 of the Core Specification ).</p>
+<p>ciphertext,mic=AES−CCMk(n,m,a)ciphertext,mic=AES−CCMk(n,m,a)</p>
+<p>其中，k是128-bit的key值，n是一个104-bit的nonce，m是要被加密认证的可变长度数据（plaintext），a是要被认证的可变长度数据（additional data）；ciphertext加密之后的加密后的数据，mic是信息完整性检查的值。</p>
+<h5 id="3-6-2-4-s1-SALT-generation-function"><a href="#3-6-2-4-s1-SALT-generation-function" class="headerlink" title="3.6.2.4 s1 SALT generation function"></a>3.6.2.4 s1 SALT generation function</h5><p>s1(M)=AES−CMACZERO(M)s1(M)=AES−CMACZERO(M)</p>
+<p>其中，M是一个长度非0的字节序列或者是ASCII字符串，ZERO是128-bit的值（每位都是0）</p>
+<p>如果M是一个ASCII字符串，就会被转换为一个字节序列。比如如果M是“MESH”，会被转换成为字节序列：0x4d, 0x45, 0x53, 0x 48。</p>
+<h5 id="3-6-2-5-k1-derivatoin-function"><a href="#3-6-2-5-k1-derivatoin-function" class="headerlink" title="3.6.2.5 k1 derivatoin function"></a>3.6.2.5 k1 derivatoin function</h5><p>The network key material derivation function k1 is used to generate instances of IdentityKey and BeaconKey.</p>
+<p>这里的key-generation函数使用了MAC函数 AES−CMACTAES−CMACT，在其中使用了一个128-bit的参数 T。</p>
+<p>k1(N,SALT,P)=AES−CMACT(P)k1(N,SALT,P)=AES−CMACT(P)</p>
+<p>其中N是0或任意字节，SALT是128bit，P是0或多个字节。T=AES−CMACSALT(N)T=AES−CMACSALT(N)</p>
+<h5 id="3-6-2-6-k2-network-key-material-derivatoin-function"><a href="#3-6-2-6-k2-network-key-material-derivatoin-function" class="headerlink" title="3.6.2.6 k2 network key material derivatoin function"></a>3.6.2.6 k2 network key material derivatoin function</h5><p>The network key material derivation function k2 is used to generate instances of EncryptionKey, PrivacyKey, and NID for use as Master and Private Low Power node communication.</p>
+<h5 id="3-6-2-7-k3-derivation-function"><a href="#3-6-2-7-k3-derivation-function" class="headerlink" title="3.6.2.7 k3 derivation function"></a>3.6.2.7 k3 derivation function</h5><p>The derivation function k3 is used to generate a public value of 64 bits derived from a private key.The definition of this derivation function makes use of the MAC function AES-CMACT with a 128-bit key T</p>
+<h5 id="3-6-2-8-k4-derivation-function"><a href="#3-6-2-8-k4-derivation-function" class="headerlink" title="3.6.2.8 k4 derivation function"></a>3.6.2.8 k4 derivation function</h5><p>The derivation function k4 is used to generate a public value of 6 bits derived from a private key.</p>
+<p>The definition of this derivation function makes use of the MAC function AES-CMACT with a 128-bit key T.</p>
+<h4 id="3-6-3-Sequnce-number"><a href="#3-6-3-Sequnce-number" class="headerlink" title="3.6.3 Sequnce number"></a>3.6.3 Sequnce number</h4><p>Sequnce nmber是一个24-bit的值，在网络层PDU的SEQ字段包含了该值，这主要是用来抵御重传攻击的。同一个节点内部的不同element之间可以共享该值也可以不共享。从每个element发出的Network PDU都有着不同的sequnce number可以保证mesh网络的安全性。</p>
+<p>作为一个24-bit的值，一个element最多可以传递 16777216 条消息在收到nonce之前。如果一个element没5秒钟发送一条喜爱哦戏，这个节点可以传送2.6年在nonce重复之前。</p>
+<p>每个element应该在Network PDU中使用严格递增的sequence number。在sequnce number到达最大值以前，节点应该使用IV Update 程序更新IV值。</p>
+<h4 id="3-6-4-IV-index"><a href="#3-6-4-IV-index" class="headerlink" title="3.6.4 IV index"></a>3.6.4 IV index</h4><p>IV index是一个32-bit的值，这是一个共享的网络资源，一个mesh网络中的所有节点都使用相同的IV值。</p>
+<p>IV值从0X00000000开始，在IV Update 程序中增加。IV增加的时间不是确切的，因为每个Network PDU都会使用IV的最低位。</p>
+<h4 id="3-6-5-Nonce"><a href="#3-6-5-Nonce" class="headerlink" title="3.6.5 Nonce"></a>3.6.5 Nonce</h4><p>nonce是一个13字节的值，每一个消息的该值都是不一样的。有四种类型的nonce，以其第一个字节的来区分，如下表所示</p>
+<table>
+<thead>
+<tr>
+<th>Nonce Type</th>
+<th>Nonce</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x00</td>
+<td>Network nonce</td>
+<td>Used with an encryption key for network authentication and encryption</td>
+</tr>
+<tr>
+<td>0x01</td>
+<td>Application nonce</td>
+<td>Used with an application key for upper transport authentication and encryption</td>
+</tr>
+<tr>
+<td>0x02</td>
+<td>Device nonce</td>
+<td>Used with a device key for upper transport authentication and encryption</td>
+</tr>
+<tr>
+<td>0x03</td>
+<td>Proxy nonce</td>
+<td>Used with an encryption key for proxy authentication and encryption</td>
+</tr>
+</tbody>
+</table>
+<h4 id="3-6-6-Keys"><a href="#3-6-6-Keys" class="headerlink" title="3.6.6 Keys"></a>3.6.6 Keys</h4><p>Mesh中定义了两种类型的key：application keys (AppKey)、network keys(NetKey)。AppKey用来在上传输层被使用，NetKeys在网络层被使用。两种类型的Key都可以在节点间共享。还有一种Key是device key(DevKey)，这是一个特殊的application key，每个节点都有一个特有的DevKey，只能被节点本身以及Client Configure所知，用来保护节点和Configureaion Client之间通讯。</p>
+<p>AppKey是跟NetKey绑定的，这意味着AppKey只能在它所绑定的NetKey的上下文中使用。一个AppKey只能绑定一个NetKey，一个DevKey可以绑定到所有的Netkey上。</p>
+<p>key的绑定关联关系可以用下图解释：</p>
+<p><img src="https://images2018.cnblogs.com/blog/1146526/201804/1146526-20180406182751828-643913599.png" alt="img"></p>
+<p>目录</p>
+<ul>
+<li>Bluetooth Mesh Provisioning<ul>
+<li><a href="https://www.cnblogs.com/gexin/p/9129247.html#provisioning-bearer-layer" target="_blank" rel="noopener">Provisioning bearer layer</a></li>
+<li><a href="https://www.cnblogs.com/gexin/p/9129247.html#generic-provisioning-pdu" target="_blank" rel="noopener">Generic Provisioning PDU</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="Bluetooth-Mesh-Provisioning"><a href="#Bluetooth-Mesh-Provisioning" class="headerlink" title="Bluetooth Mesh Provisioning"></a>Bluetooth Mesh Provisioning</h2><p>Provisioning是将未配网设备加入到mesh网中的过程，该过程是通过provisioner来实现的。Provisioner向未配网设备提供provisioning 数据，其中包括network-key、当前网络的IV_Index，还有设备每一个element对应的unicast地址。</p>
+<p>provisioner可以是手机或者其他智能设备，一个mesh网中只需要一个provisioner角色，但是亦可以允许多个provisioner实现，多个provisioner共存时的数据共享可以被特定实现。</p>
+<p>provisioning过程，首先需要在未配网设备和provisioner节点间建立一个<em>provisioning-bearer</em>。未配网设备向provisioner广播自己的UUID以及其他必要信息。provisioner连续扫描消息，收到未配网设备的消息时，选择与某一个对应的设备建立<em>provisioning-bearer</em>。</p>
+<p><em>Provisioning-bearer</em>建立后，provisioner与为配网设备间使用Elliptic Curve Diffie-Hellman (ECDH)协议加密。</p>
+<p><img src="https://images2018.cnblogs.com/blog/1146526/201806/1146526-20180603150151290-1045101615.png" alt="img"></p>
+<p>Provision协议使用分层的结构，如上图所示。设备的provision过程是通过发送provisioning-PDU实现的。provisioning-PDU通过<em>generic provision layer</em>层发往未配网设备。该层定义了provisioning-PDU是如何传输、分段重组的，传输包通过<em>provisioning-bearer</em>发送。<em>provisioning-bearer</em>定义了连接对话是如何建立的，即<em>generic provision layer</em>的传输包是怎样被传送到设备的。最后，在provision结构的最下层就是bearers。</p>
+<h3 id="Provisioning-bearer-layer"><a href="#Provisioning-bearer-layer" class="headerlink" title="Provisioning bearer layer"></a>Provisioning bearer layer</h3><p><em>provisioning bearer layer</em>实现了在provision过程中<em>provisioning PDUs</em>的传输。mesh协议中定义了两种<em>provisioning bearers</em></p>
+<ul>
+<li>PB_ADV</li>
+<li>PB_GATT</li>
+</ul>
+<p>未配网设备可以支持PB_ADV或是PB_GATT，建议在未配网设备同时实现两种bearer。provisioner至少支持一种，强烈建议provisioner支持PB-ADV。</p>
+<h4 id="PB-ADV"><a href="#PB-ADV" class="headerlink" title="PB-ADV"></a>PB-ADV</h4><p>PB-ADV是一个provisioning bearer，是用来在advertising channel上使用<em>Generic Provision PDUs</em>来进行provision的。provision机制是基于对话(session)的。一个未配网设备一次只能支持一个对话(session)，而对于provisioner则无此限制。</p>
+<p>PB-ADV用来传输<em>Generic Provisioning PDUs</em>，PB-ADV bearer最大的传输单元（Maximum Transmission Unit, MTU）是24个字节。</p>
+<p>支持PB-ADV的设备应该以占空比100%的频率扫描消息，以免丢失<em>Generic Provision PDUs</em>。</p>
+<p>PB-ADV PDU 消息包的格式如下：</p>
+<table>
+<thead>
+<tr>
+<th>Feild</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Length</td>
+<td>1</td>
+<td>length of the pb-adv PDU</td>
+</tr>
+<tr>
+<td>AD type</td>
+<td>1</td>
+<td>PB_ADV</td>
+</tr>
+<tr>
+<td>contents</td>
+<td>可变</td>
+<td>PDB-ADV PDU</td>
+</tr>
+</tbody>
+</table>
+<p>其中PB-ADV PDU格式如下：</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LInk ID</td>
+<td>4</td>
+<td>一个link的标识符</td>
+</tr>
+<tr>
+<td>Transaction Number</td>
+<td>1</td>
+<td>The number for identifying a transaction</td>
+</tr>
+<tr>
+<td>Generic Provisioning PDU</td>
+<td>1-24</td>
+<td>Generic Provisioning PDU being transferred</td>
+</tr>
+</tbody>
+</table>
+<p>LinkID 用来表示两个设备之间的一个连接。</p>
+<p>Transaction Number 包含一个1-byte的值，用来表示每个<em>Generic Provisioning PDU</em>， 如果<em>Generic Provisioning PDU</em>经过了分段，则每个分片的Transaction Number 都是相同的。而且当<em>Generic Provisioning PDU</em>重发时，该值也是不变的。</p>
+<p>在实现时还需要遵循以下几条规则：</p>
+<ul>
+<li>当PB-ADV PDU包含<em>Provisioning Bearer Control PDU</em>时， Transaction Number应该设置为0.</li>
+<li>当一个Provisioner通过一个打开的provision link，首次发送Provisioning PDU时，Transaction Number 的值应该从0x00开始，每发送一个Provisioning PDU该值累加。当到达0x7F时，返回的0.</li>
+<li>当未配网设备通过一个打开的provisin link首次发送PDU时，Transaction Number的值应该从0x80开始，每发送一个provisioning PDU累加1.当到达0xFF时，返回到0x80.</li>
+<li>当一个设备收到provisioning PDU时，将会根据收到包的Transaction Number值来设置该值。</li>
+<li>当一个设备发送Transaction响应PDU时， Transaction Number 值应该设置为其响应的那条消息的 Transaction Number 值。</li>
+</ul>
+<h4 id="PB-GATT"><a href="#PB-GATT" class="headerlink" title="PB-GATT"></a>PB-GATT</h4><p>PB_GATT是通过Proxy PDU来provision的bearer，PB-GATT是用来支持那些不支持PB-ADV的provisioner的而实现的bearer.</p>
+<p>关于GATT不太理解，后续在做整理。</p>
+<h3 id="Generic-Provisioning-PDU"><a href="#Generic-Provisioning-PDU" class="headerlink" title="Generic Provisioning PDU"></a>Generic Provisioning PDU</h3><p>Generic Provisioning PDU包含两部分，一部是Generic Provisioning Control(GPC)field, 紧接着是Generic Provisioning Payload。</p>
+<p><img src="https://www.cnblogs.com/gexin/p/pic%5Cgeneric_provisioning_pdu.png" alt="generic_provisioning_pdu"></p>
+<p>Generic ProvisionIng Control field的最低两位包含一个Generic Provisioning Control Format （GPCF）field，该值决定了PDU的类型。</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0b00</td>
+<td>Transaction Start</td>
+</tr>
+<tr>
+<td>0b01</td>
+<td>Transaction Acknowledgement</td>
+</tr>
+<tr>
+<td>0b10</td>
+<td>Trabsaction Continue</td>
+</tr>
+<tr>
+<td>0b11</td>
+<td>Transaction Bearer Control</td>
+</tr>
+</tbody>
+</table>
+<h4 id="Generic-Provisioning-PDU-1"><a href="#Generic-Provisioning-PDU-1" class="headerlink" title="Generic Provisioning PDU"></a>Generic Provisioning PDU</h4><h5 id="Transaction-Start-PDU"><a href="#Transaction-Start-PDU" class="headerlink" title="Transaction Start PDU"></a>Transaction Start PDU</h5><p>Transaction Start PDU 用来开始一段分段消息传输，其格式如下：</p>
+<p><img src="https://www.cnblogs.com/gexin/p/pic%5Ctransaction_start_pdu.png" alt="transaction_start_pdu"></p>
+<h5 id="Transaction-Acknowledgment-PDU"><a href="#Transaction-Acknowledgment-PDU" class="headerlink" title="Transaction Acknowledgment PDU"></a>Transaction Acknowledgment PDU</h5><p><em>Transaction Acknowledgment PDU</em>用来响应一个Provisioning PDU</p>
+<p>该PDU只包含一个字节，如下所示：</p>
+<p><img src="https://images2018.cnblogs.com/blog/1146526/201806/1146526-20180603150226740-477972718.png" alt="img"></p>
+<p>此时<em>Generic Provisioning Payload</em>的长度是0.</p>
+<h5 id="Transaction-Continuation-PDU"><a href="#Transaction-Continuation-PDU" class="headerlink" title="Transaction Continuation PDU"></a>Transaction Continuation PDU</h5><p>Transaction Continuation PDU用来传输后续的provisioning PDU，其结构如下所示：</p>
+<p><img src="https://images2018.cnblogs.com/blog/1146526/201806/1146526-20180603150244218-1486208743.png" alt="img"></p>
+<p>SegmentIndex是分段消息的index（从0开始）</p>
+<p>GPCF为0b10</p>
+<p>Generic Provisioning Payload 包含Provisioning PDU分段索引为SegmentIndex的内容。</p>
+<h5 id="Provisioning-Bearer-Control"><a href="#Provisioning-Bearer-Control" class="headerlink" title="Provisioning Bearer Control"></a>Provisioning Bearer Control</h5><p>Provisioning Bearer Control PDU用来管理bearer上的额对话（session），其格式如下：</p>
+<p><img src="https://www.cnblogs.com/gexin/p/pic%5Cprovisioning_berarer_control.png" alt="provisioning_berarer_control"></p>
+<h6 id="Link-Open-Message"><a href="#Link-Open-Message" class="headerlink" title="Link Open Message"></a>Link Open Message</h6><p>该消息用于打开一个连接，该消息需要使用Link-ACK-message来响应。</p>
+<p>一个设备一次只能处理一个连接，当一个连接处于活动状态时，会忽略其他的Link-Open-message.</p>
+<p>Link_Open_message消息的参数是需要建立连接的设备的UUID，如下所示：</p>
+<p><img src="https://www.cnblogs.com/gexin/p/pic%5CLink_Open_message.png" alt="Link_Open_message"></p>
+<h6 id="Link-ACK-message"><a href="#Link-ACK-message" class="headerlink" title="Link ACK message"></a>Link ACK message</h6><p>该消息用来响应Link-Open-message，没有参数，只有一个字节，如下所示：</p>
+<p><img src="https://images2018.cnblogs.com/blog/1146526/201806/1146526-20180603150259372-1136051.png" alt="img"></p>
+<h6 id="Link-Close-message"><a href="#Link-Close-message" class="headerlink" title="Link Close message"></a>Link Close message</h6><p>该消息同来关闭一个连接，由于该消息是没有响应的，因此发送端需要重复发送该消息至少三次，连接两端都可以发送该消息，并处理该消息。</p>
+<p>该消息的参数域描述关闭连接的原因，其结构如下：</p>
+<p><img src="https://images2018.cnblogs.com/blog/1146526/201806/1146526-20180603150308820-758916932.png" alt="img"></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reason</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>其值为：</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Reason</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x00</td>
+<td>success</td>
+<td>provisioning successful</td>
+</tr>
+<tr>
+<td>0x01</td>
+<td>Timeout</td>
+<td>provisioning transaction timed out</td>
+</tr>
+<tr>
+<td>0x02</td>
+<td>Fail</td>
+<td>The provisioning failed</td>
+</tr>
+<tr>
+<td>0x03 - 0xFF</td>
+<td>Unrecognized</td>
+<td>未定义</td>
+</tr>
+</tbody>
+</table>
+<h4 id="Link-Establishment-procedure"><a href="#Link-Establishment-procedure" class="headerlink" title="Link Establishment procedure"></a>Link Establishment procedure</h4><p>Link Establishment procedure 用于建立一个对话（session）， 一个对话用Link ID 标识，在连接过程中该值不会变化。LinkID需要随机生成，以避免多个对话间冲突。</p>
+<p>连接建立时，未配网设备使用UUID标识，Provisioner扫描未配网设备的广播，然后provisioner发起Link-Open-message来建立连接。Link-Open-message中包含了未配网设备的UUID。在PB-ADV上的PB-ADV PDU包含了连接的Link ID.</p>
+<p>对于一个没有配网并且已经收到了Provisioning Invite PDU的设备，当其周到一盒Link Open messsage时，会响应该消息返回一个带有相同LinkID的Link ACK message.</p>
+<p>连接可以在任何时候通过发送Link Close message来关闭，连接的两端都可以发送该消息。</p>
+<p>连接建立的流程可以用下图表示：</p>
+<p><img src="https://images2018.cnblogs.com/blog/1146526/201806/1146526-20180603150329293-1429794074.png" alt="img"></p>
+<h4 id="Generic-Provisioning-behavior"><a href="#Generic-Provisioning-behavior" class="headerlink" title="Generic Provisioning behavior"></a>Generic Provisioning behavior</h4><p>每个Generic Provisioning PDU发送时，要与上一个PDU有一个20~50毫秒的随机延时。</p>
+<p>每个Provisioning PDU都应该作为一个独立的消息包，每个消息包由一个或多个分段组成。</p>
+<p>Provisioning PDU被分段的数量，取决于该PDU的大小，segment Index可以是0~63之间的数。segment 0 应该使用Transaction Start PDU来发送。其他的分段应该使用Transaction Continue PDU来发送。每个分段都被放入Generic Provisioning Payload中。</p>
+<p>每个bearer都有一个MTU最大值限制，每个Generic ProvisionIng PDU都应该是最长的MTU长度，最后一个分段除外。</p>
+<p>发送端需要顺序发送每个分段，如果发送端没有收到回应，那么发送端会重发整个PDU的所有消息。</p>
+<p>若果发送端收到了Transaction Acknowledgement message，则表示传输成功。</p>
+<p>如果发送端在发送第一条消息后30秒内，没有收到Transaction Acknowledgement message，则发送端会取消传输，终止provision过程，关闭link。</p>
+<p>接收端会根据Transaction Start PDU中的内容，判断分段的个数。</p>
+<p>在PB-ADV bearer中，当接收端收到了所有的分段，它会计算收到Provisioning PDU的FCS，如果该值符合Transaction Start PDU中的FCS值，那么接收端就会在一个20~50毫秒的人随机延时之后，发送一个Transaction Acknowledgement PDU。</p>
+<blockquote>
+<p><a href="https://www.jianshu.com/p/2711185528f0" target="_blank" rel="noopener">https://www.jianshu.com/p/2711185528f0</a></p>
+<p><a href="https://www.cnblogs.com/gexin/p/9055365.html" target="_blank" rel="noopener">https://www.cnblogs.com/gexin/p/9055365.html</a></p>
+<p><a href="https://www.cnblogs.com/gexin/p/9129247.html" target="_blank" rel="noopener">https://www.cnblogs.com/gexin/p/9129247.html</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Mylitboy 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Mylitboy 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/IOT/" rel="tag"># IOT</a>
+          
+            <a href="/tags/SIG-Mesh/" rel="tag"># SIG Mesh</a>
+          
+            <a href="/tags/BLE-Mesh/" rel="tag"># BLE Mesh</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/article/operation/docker-install-portainer/" rel="next" title="Docker图像化管理工具Portainer安装">
+                <i class="fa fa-chevron-left"></i> Docker图像化管理工具Portainer安装
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/article/iot/ble-sig-mesh-learn-website/" rel="prev" title="蓝牙Mesh官方材料">
+                蓝牙Mesh官方材料 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Mylitboy</p>
+              <p class="site-description motion-element" itemprop="description">积累点滴，成就梦想；<br>爱编程，爱生活。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#蓝牙Mesh概念介绍"><span class="nav-number">1.</span> <span class="nav-text">蓝牙Mesh概念介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mesh网络概述"><span class="nav-number">2.</span> <span class="nav-text">Mesh网络概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#网络和子网"><span class="nav-number">2.1.</span> <span class="nav-text">网络和子网</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设备和节点-devices-amp-nodes"><span class="nav-number">2.2.</span> <span class="nav-text">设备和节点 devices &amp; nodes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#入网"><span class="nav-number">2.3.</span> <span class="nav-text">入网</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mesh中的几个概念"><span class="nav-number">2.4.</span> <span class="nav-text">Mesh中的几个概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#States（状态）"><span class="nav-number">2.4.1.</span> <span class="nav-text">States（状态）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bound-states（关联状态）"><span class="nav-number">2.4.2.</span> <span class="nav-text">Bound states（关联状态）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Messages（消息）"><span class="nav-number">2.4.3.</span> <span class="nav-text">Messages（消息）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Element"><span class="nav-number">2.4.4.</span> <span class="nav-text">Element</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Addresses-地址"><span class="nav-number">2.4.5.</span> <span class="nav-text">Addresses 地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Models"><span class="nav-number">2.4.6.</span> <span class="nav-text">Models</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#智能插座例子"><span class="nav-number">2.5.</span> <span class="nav-text">智能插座例子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Mesh-Networking"><span class="nav-number">3.</span> <span class="nav-text">3. Mesh Networking</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Bearers-承载层"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 Bearers 承载层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-1-Advertising-bearer"><span class="nav-number">3.1.1.</span> <span class="nav-text">3.1.1 Advertising bearer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-2-GATT-bearer"><span class="nav-number">3.1.2.</span> <span class="nav-text">3.1.2 GATT bearer</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Network-Layer-网络层"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 Network Layer 网络层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-1-字节序"><span class="nav-number">3.2.1.</span> <span class="nav-text">3.2.1 字节序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-2-地址"><span class="nav-number">3.2.2.</span> <span class="nav-text">3.2.2 地址</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-2-1-未分配地址"><span class="nav-number">3.2.2.1.</span> <span class="nav-text">3.2.2.1 未分配地址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-2-2-Unicast-address"><span class="nav-number">3.2.2.2.</span> <span class="nav-text">3.2.2.2 Unicast address</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-2-3-虚拟地址"><span class="nav-number">3.2.2.3.</span> <span class="nav-text">3.2.2.3 虚拟地址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-2-4-group-address"><span class="nav-number">3.2.2.4.</span> <span class="nav-text">3.2.2.4 group address</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-3-Address-validity-地址有效性"><span class="nav-number">3.3.</span> <span class="nav-text">3.2.3 Address validity 地址有效性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-4-Network-PDU"><span class="nav-number">3.4.</span> <span class="nav-text">3.2.4 Network PDU</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-4-1-IVI"><span class="nav-number">3.4.1.</span> <span class="nav-text">3.2.4.1 IVI</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-4-2-NID"><span class="nav-number">3.4.2.</span> <span class="nav-text">3.2.4.2 NID</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-4-3-CTL"><span class="nav-number">3.4.3.</span> <span class="nav-text">3.2.4.3 CTL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-4-4-TTL"><span class="nav-number">3.4.4.</span> <span class="nav-text">3.2.4.4 TTL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-4-5-SEQ"><span class="nav-number">3.4.5.</span> <span class="nav-text">3.2.4.5 SEQ</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-4-6-SRC"><span class="nav-number">3.4.6.</span> <span class="nav-text">3.2.4.6 SRC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-4-7-DST"><span class="nav-number">3.4.7.</span> <span class="nav-text">3.2.4.7 DST</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-4-8-Transport-PDU"><span class="nav-number">3.4.8.</span> <span class="nav-text">3.2.4.8 Transport PDU</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-4-9-NetMIC"><span class="nav-number">3.4.9.</span> <span class="nav-text">3.2.4.9 NetMIC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-5-Network-Interfaces"><span class="nav-number">3.4.10.</span> <span class="nav-text">3.2.5 Network Interfaces</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-5-1-Interface-input-filter"><span class="nav-number">3.4.11.</span> <span class="nav-text">3.2.5.1 Interface input filter</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-5-2-Interface-output-filter"><span class="nav-number">3.4.12.</span> <span class="nav-text">3.2.5.2 Interface output filter</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-5-3-Local-network-interface"><span class="nav-number">3.4.13.</span> <span class="nav-text">3.2.5.3 Local network interface</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-5-4-Advertising-bearer-network-interfaces"><span class="nav-number">3.4.14.</span> <span class="nav-text">3.2.5.4 Advertising bearer network interfaces</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-6-Network-layer-behavior"><span class="nav-number">3.5.</span> <span class="nav-text">3.2.6 Network layer behavior</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-6-1-Relay-feature"><span class="nav-number">3.5.1.</span> <span class="nav-text">3.2.6.1 Relay feature</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-6-2-Proxy-feature"><span class="nav-number">3.5.2.</span> <span class="nav-text">3.2.6.2 Proxy feature</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-6-3-接收network-PDU"><span class="nav-number">3.5.3.</span> <span class="nav-text">3.2.6.3 接收network PDU</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-Lower-Transport-Layer-下传输层"><span class="nav-number">3.6.</span> <span class="nav-text">3.3 Lower Transport Layer 下传输层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-1-字节序"><span class="nav-number">3.6.1.</span> <span class="nav-text">3.3.1 字节序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-2-Lower-Transport-PDU"><span class="nav-number">3.6.2.</span> <span class="nav-text">3.3.2 Lower Transport PDU</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-2-1-Unsegmented-Access-message"><span class="nav-number">3.6.3.</span> <span class="nav-text">3.3.2.1 Unsegmented Access message</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-2-2-Segmented-Access-message"><span class="nav-number">3.6.4.</span> <span class="nav-text">3.3.2.2 Segmented Access message</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-2-3-Unsegmented-Control-Message"><span class="nav-number">3.6.5.</span> <span class="nav-text">3.3.2.3 Unsegmented Control Message</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-3-2-3-1-Segmented-Acknowledgment-message"><span class="nav-number">3.6.5.1.</span> <span class="nav-text">3.3.2.3.1 Segmented Acknowledgment message</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-2-4-Segmented-Control-message"><span class="nav-number">3.6.6.</span> <span class="nav-text">3.3.2.4 Segmented Control message</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-3-分片和重组"><span class="nav-number">3.6.7.</span> <span class="nav-text">3.3.3 分片和重组</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-3-3-1-分割"><span class="nav-number">3.6.7.1.</span> <span class="nav-text">3.3.3.1 分割</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-3-3-2-重组"><span class="nav-number">3.6.7.2.</span> <span class="nav-text">3.3.3.2 重组</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-3-3-3-segmentation-behavior-分片表现"><span class="nav-number">3.6.7.3.</span> <span class="nav-text">3.3.3.3 segmentation behavior 分片表现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-3-3-4-Reassembly-behavior-重组表现"><span class="nav-number">3.6.7.4.</span> <span class="nav-text">3.3.3.4 Reassembly behavior 重组表现</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-4-Friend-Queue"><span class="nav-number">3.6.8.</span> <span class="nav-text">3.3.4 Friend Queue</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-Upper-trnsport-layer-上传输层"><span class="nav-number">3.7.</span> <span class="nav-text">3.4 Upper trnsport layer 上传输层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-1-字节序"><span class="nav-number">3.7.1.</span> <span class="nav-text">3.4.1 字节序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-2-Upper-Transport-Access-PDU"><span class="nav-number">3.7.2.</span> <span class="nav-text">3.4.2 Upper Transport Access PDU</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-4-2-1-Encrypted-access-payload"><span class="nav-number">3.7.2.1.</span> <span class="nav-text">3.4.2.1 Encrypted access payload</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-4-2-2-TransMIC"><span class="nav-number">3.7.2.2.</span> <span class="nav-text">3.4.2.2 TransMIC</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-3-Upper-Transport-Control-PDU"><span class="nav-number">3.7.3.</span> <span class="nav-text">3.4.3 Upper Transport Control PDU</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-4-Upper-transport-layer-behavior"><span class="nav-number">3.7.4.</span> <span class="nav-text">3.4.4 Upper transport layer behavior</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-4-4-1-Transmitting-an-access-payload"><span class="nav-number">3.7.4.1.</span> <span class="nav-text">3.4.4.1 Transmitting an access payload</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-4-4-2-Receiving-an-Upper-Transport-PDU"><span class="nav-number">3.7.4.2.</span> <span class="nav-text">3.4.4.2 Receiving an Upper Transport PDU</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-5-Transport-Control-messages"><span class="nav-number">3.7.5.</span> <span class="nav-text">3.4.5 Transport Control messages</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-Access-Layer-访问层"><span class="nav-number">3.8.</span> <span class="nav-text">3.5 Access Layer 访问层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-1-字节序"><span class="nav-number">3.8.1.</span> <span class="nav-text">3.5.1 字节序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-2-Model-identifier-模型识别器"><span class="nav-number">3.8.2.</span> <span class="nav-text">3.5.2 Model identifier 模型识别器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-3-Access-Payload"><span class="nav-number">3.8.3.</span> <span class="nav-text">3.5.3 Access Payload</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-5-3-1-操作码"><span class="nav-number">3.8.3.1.</span> <span class="nav-text">3.5.3.1 操作码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-5-3-2-应用参数"><span class="nav-number">3.8.3.2.</span> <span class="nav-text">3.5.3.2 应用参数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-4-Access-layer-behavior"><span class="nav-number">3.8.4.</span> <span class="nav-text">3.5.4 Access layer behavior</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-5-4-1-发送access-message"><span class="nav-number">3.8.4.1.</span> <span class="nav-text">3.5.4.1 发送access message</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-5-4-2-接收access-message"><span class="nav-number">3.8.4.2.</span> <span class="nav-text">3.5.4.2 接收access message</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-5-4-3-Security-considerations-安全注意事项"><span class="nav-number">3.8.4.3.</span> <span class="nav-text">3.5.4.3 Security considerations 安全注意事项</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-5-4-4-Message-error-procedure"><span class="nav-number">3.8.4.4.</span> <span class="nav-text">3.5.4.4 Message error procedure</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-5-Unacknowledged-and-acknowledged-messages"><span class="nav-number">3.8.5.</span> <span class="nav-text">3.5.5 Unacknowledged and acknowledged messages</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-5-5-1-Unacknowledged-message"><span class="nav-number">3.8.5.1.</span> <span class="nav-text">3.5.5.1 Unacknowledged message</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-5-5-2-Acknowledged-message"><span class="nav-number">3.8.5.2.</span> <span class="nav-text">3.5.5.2 Acknowledged message</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-6-Publish-and-subscribe发布与订阅"><span class="nav-number">3.8.6.</span> <span class="nav-text">3.5.6 Publish and subscribe发布与订阅</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-5-6-1-Publish"><span class="nav-number">3.8.6.1.</span> <span class="nav-text">3.5.6.1 Publish</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#3-5-6-1-1-State-transitions-状态转变"><span class="nav-number">3.8.6.1.1.</span> <span class="nav-text">3.5.6.1.1 State transitions 状态转变</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-5-6-1-2-State-change-publishing-状态转变发布"><span class="nav-number">3.8.6.1.2.</span> <span class="nav-text">3.5.6.1.2 State change publishing 状态转变发布</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-5-6-1-3-周期发布"><span class="nav-number">3.8.6.1.3.</span> <span class="nav-text">3.5.6.1.3 周期发布</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-5-6-2-Subscribe-订阅"><span class="nav-number">3.8.6.2.</span> <span class="nav-text">3.5.6.2 Subscribe 订阅</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-7-Example-message-sequence-charts"><span class="nav-number">3.8.7.</span> <span class="nav-text">3.5.7 Example message sequence charts</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-5-7-1-Acknowledged-Get"><span class="nav-number">3.8.7.1.</span> <span class="nav-text">3.5.7.1 Acknowledged Get</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-5-7-2-Acknowledged-Set"><span class="nav-number">3.8.7.2.</span> <span class="nav-text">3.5.7.2 Acknowledged Set</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-5-7-3-Unacknowledged-Set"><span class="nav-number">3.8.7.3.</span> <span class="nav-text">3.5.7.3 Unacknowledged Set</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-5-7-4-Acknowledged-set-with-periodic-publishing"><span class="nav-number">3.8.7.4.</span> <span class="nav-text">3.5.7.4 Acknowledged set with periodic publishing</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-Mesh-Security"><span class="nav-number">3.9.</span> <span class="nav-text">3.6 Mesh Security</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-6-1-Endianness-字节序"><span class="nav-number">3.9.1.</span> <span class="nav-text">3.6.1 Endianness 字节序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-6-2-Security-toolbox"><span class="nav-number">3.9.2.</span> <span class="nav-text">3.6.2 Security toolbox</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-6-2-1-Encrption-function-加密函数"><span class="nav-number">3.9.2.1.</span> <span class="nav-text">3.6.2.1 Encrption function 加密函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-6-2-2-CMAC-function"><span class="nav-number">3.9.2.2.</span> <span class="nav-text">3.6.2.2 CMAC function</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-6-2-3-CCM-funtion"><span class="nav-number">3.9.2.3.</span> <span class="nav-text">3.6.2.3 CCM funtion</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-6-2-4-s1-SALT-generation-function"><span class="nav-number">3.9.2.4.</span> <span class="nav-text">3.6.2.4 s1 SALT generation function</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-6-2-5-k1-derivatoin-function"><span class="nav-number">3.9.2.5.</span> <span class="nav-text">3.6.2.5 k1 derivatoin function</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-6-2-6-k2-network-key-material-derivatoin-function"><span class="nav-number">3.9.2.6.</span> <span class="nav-text">3.6.2.6 k2 network key material derivatoin function</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-6-2-7-k3-derivation-function"><span class="nav-number">3.9.2.7.</span> <span class="nav-text">3.6.2.7 k3 derivation function</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-6-2-8-k4-derivation-function"><span class="nav-number">3.9.2.8.</span> <span class="nav-text">3.6.2.8 k4 derivation function</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-6-3-Sequnce-number"><span class="nav-number">3.9.3.</span> <span class="nav-text">3.6.3 Sequnce number</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-6-4-IV-index"><span class="nav-number">3.9.4.</span> <span class="nav-text">3.6.4 IV index</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-6-5-Nonce"><span class="nav-number">3.9.5.</span> <span class="nav-text">3.6.5 Nonce</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-6-6-Keys"><span class="nav-number">3.9.6.</span> <span class="nav-text">3.6.6 Keys</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bluetooth-Mesh-Provisioning"><span class="nav-number">4.</span> <span class="nav-text">Bluetooth Mesh Provisioning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Provisioning-bearer-layer"><span class="nav-number">4.1.</span> <span class="nav-text">Provisioning bearer layer</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PB-ADV"><span class="nav-number">4.1.1.</span> <span class="nav-text">PB-ADV</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PB-GATT"><span class="nav-number">4.1.2.</span> <span class="nav-text">PB-GATT</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generic-Provisioning-PDU"><span class="nav-number">4.2.</span> <span class="nav-text">Generic Provisioning PDU</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Generic-Provisioning-PDU-1"><span class="nav-number">4.2.1.</span> <span class="nav-text">Generic Provisioning PDU</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Transaction-Start-PDU"><span class="nav-number">4.2.1.1.</span> <span class="nav-text">Transaction Start PDU</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Transaction-Acknowledgment-PDU"><span class="nav-number">4.2.1.2.</span> <span class="nav-text">Transaction Acknowledgment PDU</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Transaction-Continuation-PDU"><span class="nav-number">4.2.1.3.</span> <span class="nav-text">Transaction Continuation PDU</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Provisioning-Bearer-Control"><span class="nav-number">4.2.1.4.</span> <span class="nav-text">Provisioning Bearer Control</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Link-Open-Message"><span class="nav-number">4.2.1.4.1.</span> <span class="nav-text">Link Open Message</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Link-ACK-message"><span class="nav-number">4.2.1.4.2.</span> <span class="nav-text">Link ACK message</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Link-Close-message"><span class="nav-number">4.2.1.4.3.</span> <span class="nav-text">Link Close message</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Link-Establishment-procedure"><span class="nav-number">4.2.2.</span> <span class="nav-text">Link Establishment procedure</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Generic-Provisioning-behavior"><span class="nav-number">4.2.3.</span> <span class="nav-text">Generic Provisioning behavior</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mylitboy</span>
+
+  <a href="http://www.miitbeian.gov.cn/">浙ICP备16008288号</a> 
+  
+  
+
+  <br>
+  <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1273987384'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1273987384%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+
+  <script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<script>(function(){
+var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?a83273477505fc1fb7ffa93b032fa252":"https://jspassport.ssl.qhimg.com/11.0.1.js?a83273477505fc1fb7ffa93b032fa252";
+document.write('<script src="' + src + '" id="sozz"><\/script>');
+})();
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("OceRHliDNgLTXw4FDd6GdPny-gzGzoHsz", "6p03t3Gje3MxO8valqCDkNlS");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
