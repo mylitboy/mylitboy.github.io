@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Mylitboy, 麦粒橙, 大数据, Hadoop, Hadoop入门, MapReduce">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="MapReduce 是一种处理技术和程序模型基于Java的分布式计算。 MapReduce算法包含了两项重要任务，即Map 和 Reduce。Map采用了一组数据，并将其转换成另一组数据，其中，各个元件被分解成元组(键/值对)。其次，减少任务，这需要从Map 作为输入并组合那些数据元组成的一组小的元组输出。作为MapReduce暗示的名称的序列在Map作业之后执行reduce任务。 MapRedu">
+<meta name="keywords" content="Mylitboy, 麦粒橙, 大数据, Hadoop, Hadoop入门, MapReduce">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Hadoop入门] MapReduce介绍及使用案例">
+<meta property="og:url" content="https://blog.mylitboy.com/article/bigdata/hadoop-mapreduce-introduction-and-simple-use.html">
+<meta property="og:site_name" content="-麦粒橙-技术博客-">
+<meta property="og:description" content="MapReduce 是一种处理技术和程序模型基于Java的分布式计算。 MapReduce算法包含了两项重要任务，即Map 和 Reduce。Map采用了一组数据，并将其转换成另一组数据，其中，各个元件被分解成元组(键/值对)。其次，减少任务，这需要从Map 作为输入并组合那些数据元组成的一组小的元组输出。作为MapReduce暗示的名称的序列在Map作业之后执行reduce任务。 MapRedu">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://blog.mylitboy.com/article/bigdata/article/bigdata/hadoop-mapreduce-introduction-and-simple-use/mapreduceintroduction.png">
+<meta property="og:updated_time" content="2018-12-11T14:35:47.300Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[Hadoop入门] MapReduce介绍及使用案例">
+<meta name="twitter:description" content="MapReduce 是一种处理技术和程序模型基于Java的分布式计算。 MapReduce算法包含了两项重要任务，即Map 和 Reduce。Map采用了一组数据，并将其转换成另一组数据，其中，各个元件被分解成元组(键/值对)。其次，减少任务，这需要从Map 作为输入并组合那些数据元组成的一组小的元组输出。作为MapReduce暗示的名称的序列在Map作业之后执行reduce任务。 MapRedu">
+<meta name="twitter:image" content="https://blog.mylitboy.com/article/bigdata/article/bigdata/hadoop-mapreduce-introduction-and-simple-use/mapreduceintroduction.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://blog.mylitboy.com/article/bigdata/hadoop-mapreduce-introduction-and-simple-use.html">
+
+
+
+
+
+  <title>[Hadoop入门] MapReduce介绍及使用案例 | -麦粒橙-技术博客-</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?4da59f76a7da6f6f09a404f9f4637848";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">-麦粒橙-技术博客-</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">积累点滴，成就梦想</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.mylitboy.com/article/bigdata/hadoop-mapreduce-introduction-and-simple-use.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mylitboy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="-麦粒橙-技术博客-">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">[Hadoop入门] MapReduce介绍及使用案例</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-24T16:24:25+00:00">
+                2018-05-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hadoop/" itemprop="url" rel="index">
+                    <span itemprop="name">Hadoop</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/article/bigdata/hadoop-mapreduce-introduction-and-simple-use.html" class="leancloud_visitors" data-flag-title="[Hadoop入门] MapReduce介绍及使用案例">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>MapReduce</strong> 是一种处理技术和程序模型基于Java的分布式计算。</p>
+<p>MapReduce算法包含了两项重要任务，即Map 和 Reduce。Map采用了一组数据，并将其转换成另一组数据，其中，各个元件被分解成元组(键/值对)。其次，减少任务，这需要从Map 作为输入并组合那些数据元组成的一组小的元组输出。作为MapReduce暗示的名称的序列在Map作业之后执行reduce任务。</p>
+<p><strong>MapReduce主要优点</strong> 是，它很容易大规模数据处理在多个计算节点。下面MapReduce模型中，数据处理的原语被称为映射器和减速器。分解数据处理应用到映射器和减速器有时是普通的。但是编写MapReduce形式的应用，扩展应用程序运行在几百，几千，甚至几万机集群中的仅仅是一个配置的更改。这个简单的可扩展性是吸引了众多程序员使用MapReduce模型。</p>
+<h4 id="MapReduce术语"><a href="#MapReduce术语" class="headerlink" title="MapReduce术语"></a>MapReduce术语</h4><ul>
+<li>PayLoad - 应用程序实现映射和减少功能，形成工作的核心。</li>
+<li>Mapper - 映射器的输入键/值对映射到一组中间键/值对。</li>
+<li>NamedNode - 节点管理Hadoop分布式文件系统（HDFS）。</li>
+<li>DataNode - 节点数据呈现在任何处理发生之前。</li>
+<li>MasterNode - 节点所在JobTracker运行并接受来自客户端作业请求。</li>
+<li>SlaveNode - 节点所在Map和Reduce程序运行。</li>
+<li>JobTracker - 调度作业并跟踪作业分配给任务跟踪器。</li>
+<li>Task Tracker - 跟踪任务和报告状态的JobTracker。</li>
+<li>Job -程序在整个数据集映射器和减速的执行。</li>
+<li>Task - 一个映射程序的执行或对数据的一个片段的减速器。</li>
+<li>Task Attempt - 一种尝试的特定实例在SlaveNode执行任务。</li>
+</ul>
+<img src="/article/bigdata/article/bigdata/hadoop-mapreduce-introduction-and-simple-use/mapreduceintroduction.png" title="MapReduceIntroduction">
+<p>下面给出是关于一个组织的电消耗量的数据。它包含了每月的用电量，各年的平均。<br>Year | Jan | Feb | Mar | Apr | May | Jun | Jul | Aug | Sep | Oct | Nov | Dec | Avg<br>— | — | — | — | — | — | — | — | — | — | — | — | — | —<br>1979 | 23 | 23 | 2 | 43 | 24 | 25 | 26 | 26 | 26 | 26 | 25 | 26 | 25<br>1980 | 26 | 27 | 28 | 28 | 28 | 30 | 31 | 31 | 31 | 30 | 30 | 30 | 29<br>1981 | 31 | 32 | 32 | 32 | 33 | 34 | 35 | 36 | 36 | 34 | 34 | 34 | 34<br>1984 | 39 | 38 | 39 | 39 | 39 | 41 | 42 | 43 | 40 | 39 | 38 | 38 | 40<br>1985 | 38 | 39 | 39 | 39 | 39 | 41 | 41 | 41 | 0 | 40 | 39 | 39 | 45</p>
+<p>如果上述数据作为输入，我们需要编写应用程序来处理它而产生的结果，如发现最大使用量，最低使用年份，依此类推。这是一个轻松取胜用于记录有限数目的编程器。他们将编写简单地逻辑，以产生所需的输出，并且将数据传递到写入的应用程序。<br>但是，代表一个特定状态下所有的大规模产业的电力消耗数据。<br>当我们编写应用程序来处理这样的大量数据，</p>
+<ul>
+<li>他们需要大量的时间来执行。</li>
+<li>将会有一个很大的网络流量，当我们将数据从源到网络服务器等。  </li>
+</ul>
+<p>为了解决这些问题，使用MapReduce框架。<br>输入数据<br>上述数据被保存为 sample.txt 并作为输入。输入文件看起来如下所示。tab键分隔<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1979   23   23   2   43   24   25   26   26   26   26   25   26  25</span><br><span class="line">1980   26   27   28  28   28   30   31   31   31   30   30   30  29</span><br><span class="line">1981   31   32   32  32   33   34   35   36   36   34   34   34  34</span><br><span class="line">1984   39   38   39  39   39   41   42   43   40   39   38   38  40</span><br><span class="line">1985   38   39   39  39   39   41   41   41   00   40   39   39  45</span><br></pre></td></tr></table></figure></p>
+<h3 id="示例程序"><a href="#示例程序" class="headerlink" title="示例程序"></a>示例程序</h3><p>下面给出的是使用MapReduce框架的样本数据的程序。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.fs.Path;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.conf.*;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.io.*;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapred.*;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProcessUnits</span> </span>&#123;</span><br><span class="line">   <span class="comment">//Mapper class</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">E_EMapper</span> <span class="keyword">extends</span> <span class="title">MapReduceBase</span> <span class="keyword">implements</span></span></span><br><span class="line"><span class="class">   <span class="title">Mapper</span>&lt;<span class="title">LongWritable</span> ,/*<span class="title">Input</span> <span class="title">key</span> <span class="title">Type</span> */</span></span><br><span class="line"><span class="class">   <span class="title">Text</span>,                /*<span class="title">Input</span> <span class="title">value</span> <span class="title">Type</span>*/</span></span><br><span class="line"><span class="class">   <span class="title">Text</span>,                /*<span class="title">Output</span> <span class="title">key</span> <span class="title">Type</span>*/</span></span><br><span class="line"><span class="class">   <span class="title">IntWritable</span>&gt;        /*<span class="title">Output</span> <span class="title">value</span> <span class="title">Type</span>*/</span></span><br><span class="line"><span class="class">   </span>&#123;</span><br><span class="line">      <span class="comment">//Map function</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">map</span><span class="params">(LongWritable key, Text value,</span></span></span><br><span class="line"><span class="function"><span class="params">      OutputCollector&lt;Text, IntWritable&gt; output,   </span></span></span><br><span class="line"><span class="function"><span class="params">      Reporter reporter)</span> <span class="keyword">throws</span> IOException   </span>&#123;</span><br><span class="line">         String line = value.toString();</span><br><span class="line">         String lasttoken = <span class="keyword">null</span>;</span><br><span class="line">         StringTokenizer s = <span class="keyword">new</span> StringTokenizer(line,<span class="string">"\t"</span>);</span><br><span class="line">         String year = s.nextToken();</span><br><span class="line"></span><br><span class="line">         <span class="keyword">while</span>(s.hasMoreTokens())  &#123;</span><br><span class="line">               lasttoken=s.nextToken();</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">         <span class="keyword">int</span> avgprice = Integer.parseInt(lasttoken);</span><br><span class="line">         output.collect(<span class="keyword">new</span> Text(year), <span class="keyword">new</span> IntWritable(avgprice));</span><br><span class="line">      &#125;  &#125;    </span><br><span class="line"></span><br><span class="line">   <span class="comment">//Reducer class</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">E_EReduce</span> <span class="keyword">extends</span> <span class="title">MapReduceBase</span> <span class="keyword">implements</span></span></span><br><span class="line"><span class="class">   <span class="title">Reducer</span>&lt; <span class="title">Text</span>, <span class="title">IntWritable</span>, <span class="title">Text</span>, <span class="title">IntWritable</span> &gt; </span>&#123;     </span><br><span class="line">      <span class="comment">//Reduce function</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reduce</span><span class="params">( Text key, Iterator &lt;IntWritable&gt; values,</span></span></span><br><span class="line"><span class="function"><span class="params">         OutputCollector&lt;Text, IntWritable&gt; output, Reporter reporter)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> maxavg=<span class="number">30</span>;</span><br><span class="line">            <span class="keyword">int</span> val=Integer.MIN_VALUE;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> (values.hasNext())  &#123;</span><br><span class="line">               <span class="keyword">if</span>((val=values.next().get())&gt;maxavg) &#123;</span><br><span class="line">                  output.collect(key, <span class="keyword">new</span> IntWritable(val));</span><br><span class="line">     &#125;   &#125;   &#125;   &#125;  </span><br><span class="line"></span><br><span class="line">   <span class="comment">//Main function</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span><span class="keyword">throws</span> Exception  </span>&#123;</span><br><span class="line">      JobConf conf = <span class="keyword">new</span> JobConf(ProcessUnits.class);</span><br><span class="line"></span><br><span class="line">      conf.setJobName(<span class="string">"max_eletricityunits"</span>);</span><br><span class="line">      conf.setOutputKeyClass(Text.class);</span><br><span class="line">      conf.setOutputValueClass(IntWritable.class);</span><br><span class="line">      conf.setMapperClass(E_EMapper.class);</span><br><span class="line">      conf.setCombinerClass(E_EReduce.class);</span><br><span class="line">      conf.setReducerClass(E_EReduce.class);</span><br><span class="line">      conf.setInputFormat(TextInputFormat.class);</span><br><span class="line">      conf.setOutputFormat(TextOutputFormat.class);</span><br><span class="line"></span><br><span class="line">      FileInputFormat.setInputPaths(conf, <span class="keyword">new</span> Path(args[<span class="number">0</span>]));</span><br><span class="line">      FileOutputFormat.setOutputPath(conf, <span class="keyword">new</span> Path(args[<span class="number">1</span>]));</span><br><span class="line"></span><br><span class="line">      JobClient.runJob(conf);</span><br><span class="line">   &#125; &#125;</span><br></pre></td></tr></table></figure></p>
+<p>保存上述程序作为ProcessUnits.java。编译和执行的程序如下的说明。</p>
+<h3 id="编译和执行进程单位程序"><a href="#编译和执行进程单位程序" class="headerlink" title="编译和执行进程单位程序"></a>编译和执行进程单位程序</h3><p>让我们假设是在Hadoop的用户（如/home/hadoop）的主目录。<br>按照下面给出编译和执行上面程序的步骤。</p>
+<h4 id="第1步"><a href="#第1步" class="headerlink" title="第1步"></a>第1步</h4><p>下面的命令是创建一个目录来存储编译的Java类。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir units</span><br></pre></td></tr></table></figure></p>
+<h4 id="第2步"><a href="#第2步" class="headerlink" title="第2步"></a>第2步</h4><p>下载Hadoop-core-1.2.1.jar，它用于编译和执行MapReduce程序。访问以下链接 <a href="http://mvnrepository.com/artifact/org.apache.hadoop/hadoop-core/1.2.1下载JAR。" target="_blank" rel="noopener">http://mvnrepository.com/artifact/org.apache.hadoop/hadoop-core/1.2.1下载JAR。</a><br>假设下载的文件夹是 <code>/home/hadoop/</code>.</p>
+<h4 id="第3步"><a href="#第3步" class="headerlink" title="第3步"></a>第3步</h4><p>下面的命令用于编译ProcessUnits.java程序并创建一个jar程序。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ javac -classpath hadoop-core-1.2.1.jar -d units ProcessUnits.java</span><br><span class="line">$ jar -cvf units.jar -C units/ .</span><br></pre></td></tr></table></figure></p>
+<h4 id="第4步"><a href="#第4步" class="headerlink" title="第4步"></a>第4步</h4><p>下面的命令用来创建一个输入目录在HDFS中。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$HADOOP_HOME/bin/hadoop fs -mkdir input_dir</span><br></pre></td></tr></table></figure></p>
+<h4 id="第5步"><a href="#第5步" class="headerlink" title="第5步"></a>第5步</h4><p>下面的命令用于复制命名sample.txt在HDFS输入目录中输入文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$HADOOP_HOME/bin/hadoop fs -put /home/hadoop/sample.txt input_dir</span><br></pre></td></tr></table></figure></p>
+<h4 id="第6步"><a href="#第6步" class="headerlink" title="第6步"></a>第6步</h4><p>下面的命令用来验证在输入目录中的文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$HADOOP_HOME/bin/hadoop fs -ls input_dir/</span><br></pre></td></tr></table></figure></p>
+<h4 id="第7步"><a href="#第7步" class="headerlink" title="第7步"></a>第7步</h4><p>下面的命令用于通过从输入目录以输入文件来运行Eleunit_max应用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$HADOOP_HOME/bin/hadoop jar units.jar hadoop.ProcessUnits input_dir output_dir</span><br></pre></td></tr></table></figure></p>
+<p>等待一段时间，直到执行文件。在执行后，如下图所示，输出将包含输入分割的数目，映射任务数，减速器任务的数量等。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">INFO mapreduce.Job: Job job_1414748220717_0002</span><br><span class="line">completed successfully 14/10/31 06:02:52</span><br><span class="line">INFO mapreduce.Job: Counters: 49 File System Counters</span><br><span class="line"></span><br><span class="line">FILE: Number of bytes read=61</span><br><span class="line">FILE: Number of bytes written=279400</span><br><span class="line">FILE: Number of read operations=0</span><br><span class="line">FILE: Number of large read operations=0   </span><br><span class="line">FILE: Number of write operations=0</span><br><span class="line">HDFS: Number of bytes read=546</span><br><span class="line">HDFS: Number of bytes written=40</span><br><span class="line">HDFS: Number of read operations=9</span><br><span class="line">HDFS: Number of large read operations=0</span><br><span class="line">HDFS: Number of write operations=2 Job Counters</span><br><span class="line"></span><br><span class="line">   Launched map tasks=2  </span><br><span class="line">   Launched reduce tasks=1</span><br><span class="line">   Data-local map tasks=2  </span><br><span class="line">   Total time spent by all maps in occupied slots (ms)=146137</span><br><span class="line">   Total time spent by all reduces in occupied slots (ms)=441   </span><br><span class="line">   Total time spent by all map tasks (ms)=14613</span><br><span class="line">   Total time spent by all reduce tasks (ms)=44120</span><br><span class="line">   Total vcore-seconds taken by all map tasks=146137</span><br><span class="line"></span><br><span class="line">   Total vcore-seconds taken by all reduce tasks=44120</span><br><span class="line">   Total megabyte-seconds taken by all map tasks=149644288</span><br><span class="line">   Total megabyte-seconds taken by all reduce tasks=45178880</span><br><span class="line">   Map-Reduce Framework</span><br><span class="line"> Map input records=5  </span><br><span class="line">   Map output records=5   </span><br><span class="line">   Map output bytes=45  </span><br><span class="line">   Map output materialized bytes=67  </span><br><span class="line">   Input split bytes=208</span><br><span class="line">   Combine input records=5  </span><br><span class="line">   Combine output records=5</span><br><span class="line">   Reduce input groups=5  </span><br><span class="line">   Reduce shuffle bytes=6  </span><br><span class="line">   Reduce input records=5  </span><br><span class="line">   Reduce output records=5  </span><br><span class="line">   Spilled Records=10  </span><br><span class="line">   Shuffled Maps =2  </span><br><span class="line">   Failed Shuffles=0  </span><br><span class="line">   Merged Map outputs=2  </span><br><span class="line">   GC time elapsed (ms)=948  </span><br><span class="line">   CPU time spent (ms)=5160  </span><br><span class="line">   Physical memory (bytes) snapshot=47749120  </span><br><span class="line">   Virtual memory (bytes) snapshot=2899349504  </span><br><span class="line">   Total committed heap usage (bytes)=277684224</span><br><span class="line">     File Output Format Counters</span><br><span class="line"></span><br><span class="line">   Bytes Written=40</span><br></pre></td></tr></table></figure></p>
+<h4 id="第8步"><a href="#第8步" class="headerlink" title="第8步"></a>第8步</h4><p>下面的命令用来验证在输出文件夹所得文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$HADOOP_HOME/bin/hadoop fs -ls output_dir/</span><br></pre></td></tr></table></figure></p>
+<h4 id="第9步"><a href="#第9步" class="headerlink" title="第9步"></a>第9步</h4><p>下面的命令是用来查看输出Part-00000文件。该文件由HDFS产生。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$HADOOP_HOME/bin/hadoop fs -cat output_dir/part-00000</span><br></pre></td></tr></table></figure></p>
+<p>下面是由MapReduce的程序所产生的输出。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1981    34 1984    40 1985    45</span><br></pre></td></tr></table></figure></p>
+<h4 id="第10步"><a href="#第10步" class="headerlink" title="第10步"></a>第10步</h4><p>以下命令用于从HDFS输出文件夹复制到本地文件系统进行分析。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$HADOOP_HOME/bin/hadoop fs -cat output_dir/part-00000/bin/hadoop dfs get output_dir /home/hadoop</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Mylitboy 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Mylitboy 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hadoop/" rel="tag"># Hadoop</a>
+          
+            <a href="/tags/MapReduce/" rel="tag"># MapReduce</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/article/bigdata/hadoop-hdfs-introduction-and-simple-use.html" rel="next" title="[Hadoop入门] HDFS介绍及使用">
+                <i class="fa fa-chevron-left"></i> [Hadoop入门] HDFS介绍及使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/article/bigdata/flume-install-and-simple-use.html" rel="prev" title="[Hadoop入门] Flume安装及使用">
+                [Hadoop入门] Flume安装及使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Mylitboy</p>
+              <p class="site-description motion-element" itemprop="description">积累点滴，成就梦想；<br>爱编程，爱生活。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#MapReduce术语"><span class="nav-number">1.</span> <span class="nav-text">MapReduce术语</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#示例程序"><span class="nav-number"></span> <span class="nav-text">示例程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编译和执行进程单位程序"><span class="nav-number"></span> <span class="nav-text">编译和执行进程单位程序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第1步"><span class="nav-number">1.</span> <span class="nav-text">第1步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第2步"><span class="nav-number">2.</span> <span class="nav-text">第2步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第3步"><span class="nav-number">3.</span> <span class="nav-text">第3步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第4步"><span class="nav-number">4.</span> <span class="nav-text">第4步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第5步"><span class="nav-number">5.</span> <span class="nav-text">第5步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第6步"><span class="nav-number">6.</span> <span class="nav-text">第6步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第7步"><span class="nav-number">7.</span> <span class="nav-text">第7步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第8步"><span class="nav-number">8.</span> <span class="nav-text">第8步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第9步"><span class="nav-number">9.</span> <span class="nav-text">第9步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第10步"><span class="nav-number">10.</span> <span class="nav-text">第10步</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mylitboy</span>
+
+  <a href="http://www.miitbeian.gov.cn/">浙ICP备16008288号</a> 
+  
+  
+
+  <br>
+  <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1273987384'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1273987384%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+
+  <script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<script>(function(){
+var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?a83273477505fc1fb7ffa93b032fa252":"https://jspassport.ssl.qhimg.com/11.0.1.js?a83273477505fc1fb7ffa93b032fa252";
+document.write('<script src="' + src + '" id="sozz"><\/script>');
+})();
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("OceRHliDNgLTXw4FDd6GdPny-gzGzoHsz", "6p03t3Gje3MxO8valqCDkNlS");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
