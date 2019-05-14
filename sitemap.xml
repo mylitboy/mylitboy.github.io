@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.mylitboy.com/about/index.html</loc>
+    
+    <lastmod>2019-05-14T06:59:52.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.mylitboy.com/article/operation/docker-install-openldap.html</loc>
     
     <lastmod>2019-05-08T05:31:51.898Z</lastmod>
@@ -156,14 +163,14 @@
   </url>
   
   <url>
-    <loc>https://blog.mylitboy.com/article/bigdata/hive-instroduction-and-simple-use.html</loc>
+    <loc>https://blog.mylitboy.com/article/bigdata/hadoop-introduction-and-simple-use.html</loc>
     
     <lastmod>2018-12-11T14:35:47.300Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.mylitboy.com/article/bigdata/hadoop-introduction-and-simple-use.html</loc>
+    <loc>https://blog.mylitboy.com/article/bigdata/hive-instroduction-and-simple-use.html</loc>
     
     <lastmod>2018-12-11T14:35:47.300Z</lastmod>
     
@@ -198,13 +205,6 @@
   </url>
   
   <url>
-    <loc>https://blog.mylitboy.com/article/bigdata/hadoop-and-its-ecosystem.html</loc>
-    
-    <lastmod>2018-12-11T14:35:47.299Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://blog.mylitboy.com/article/bigdata/flume-install-and-simple-use.html</loc>
     
     <lastmod>2018-12-11T14:35:47.299Z</lastmod>
@@ -212,9 +212,9 @@
   </url>
   
   <url>
-    <loc>https://blog.mylitboy.com/about/index.html</loc>
+    <loc>https://blog.mylitboy.com/article/bigdata/hadoop-and-its-ecosystem.html</loc>
     
-    <lastmod>2018-12-06T16:43:49.371Z</lastmod>
+    <lastmod>2018-12-11T14:35:47.299Z</lastmod>
     
   </url>
   
