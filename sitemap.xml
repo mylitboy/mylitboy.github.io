@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.mylitboy.com/article/operation/zentao-config-ldap.html</loc>
+    
+    <lastmod>2019-05-16T08:15:17.358Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.mylitboy.com/article/operation/ubuntu-install-docker.html</loc>
     
     <lastmod>2019-05-16T02:59:56.749Z</lastmod>
@@ -58,6 +65,13 @@
   </url>
   
   <url>
+    <loc>https://blog.mylitboy.com/article/operation/docker-install-openldap.html</loc>
+    
+    <lastmod>2019-05-16T02:59:56.748Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.mylitboy.com/article/operation/docker-install-portainer.html</loc>
     
     <lastmod>2019-05-16T02:59:56.748Z</lastmod>
@@ -66,13 +80,6 @@
   
   <url>
     <loc>https://blog.mylitboy.com/article/operation/nginx-set-http-rewrite-to-https.html</loc>
-    
-    <lastmod>2019-05-16T02:59:56.748Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.mylitboy.com/article/operation/docker-install-openldap.html</loc>
     
     <lastmod>2019-05-16T02:59:56.748Z</lastmod>
     
