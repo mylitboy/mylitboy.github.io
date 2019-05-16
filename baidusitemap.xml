@@ -28,10 +28,10 @@
     <loc>https://blog.mylitboy.com/article/operation/docker-install-openldap.html</loc>
     <lastmod>2019-05-16</lastmod>
   </url>  <url>
-    <loc>https://blog.mylitboy.com/article/operation/docker-install-portainer.html</loc>
+    <loc>https://blog.mylitboy.com/article/operation/nginx-set-http-rewrite-to-https.html</loc>
     <lastmod>2019-05-16</lastmod>
   </url>  <url>
-    <loc>https://blog.mylitboy.com/article/operation/nginx-set-http-rewrite-to-https.html</loc>
+    <loc>https://blog.mylitboy.com/article/operation/docker-install-portainer.html</loc>
     <lastmod>2019-05-16</lastmod>
   </url>  <url>
     <loc>https://blog.mylitboy.com/article/frontend/vuejs-install-and-simple-use.html</loc>
@@ -79,19 +79,19 @@
     <loc>https://blog.mylitboy.com/article/bigdata/hadoop-introduction-and-simple-use.html</loc>
     <lastmod>2018-12-11</lastmod>
   </url>  <url>
-    <loc>https://blog.mylitboy.com/article/blog/hexo-add-image-and-markdown-use-local-image.html</loc>
+    <loc>https://blog.mylitboy.com/article/bigdata/sqoop-install-and-simple-use.html</loc>
     <lastmod>2018-12-11</lastmod>
   </url>  <url>
-    <loc>https://blog.mylitboy.com/article/bigdata/sqoop-install-and-simple-use.html</loc>
+    <loc>https://blog.mylitboy.com/article/blog/hexo-add-image-and-markdown-use-local-image.html</loc>
     <lastmod>2018-12-11</lastmod>
   </url>  <url>
     <loc>https://blog.mylitboy.com/article/bigdata/hadoop-mapreduce-introduction-and-simple-use.html</loc>
     <lastmod>2018-12-11</lastmod>
   </url>  <url>
-    <loc>https://blog.mylitboy.com/article/bigdata/flume-install-and-simple-use.html</loc>
+    <loc>https://blog.mylitboy.com/article/bigdata/hadoop-and-its-ecosystem.html</loc>
     <lastmod>2018-12-11</lastmod>
   </url>  <url>
-    <loc>https://blog.mylitboy.com/article/bigdata/hadoop-and-its-ecosystem.html</loc>
+    <loc>https://blog.mylitboy.com/article/bigdata/flume-install-and-simple-use.html</loc>
     <lastmod>2018-12-11</lastmod>
   </url>
 </urlset>
