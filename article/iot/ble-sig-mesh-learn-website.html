@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://blog.bluetooth.com/~/media/images/blog%20images/prove%20mesh%201.ashx?h=445&w=250&la=en&hash=172BED23EF89EF96F3ACB3F00D527A46A70B38F1">
 <meta property="og:image" content="https://blog.bluetooth.com/~/media/images/blog%20images/prove%20mesh%202.ashx?h=445&w=250&la=en&hash=F0E5BD7534E9C48E14FFE3AABDE858B2C4E1D8C3">
-<meta property="og:updated_time" content="2018-12-11T14:35:47.303Z">
+<meta property="og:updated_time" content="2019-05-16T02:59:56.747Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="蓝牙Mesh官方材料">
 <meta name="twitter:description" content="A Developer’s Guide for Proving Bluetooth Mesh InteroperabilityInteroperability is an important requirement for any wireless communication protocol supporting a mesh network topology. At this year’s B">
@@ -340,6 +340,18 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/article/iot/ble-sig-mesh-learn-website.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/article/iot/ble-sig-mesh-learn-website.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
           
           
@@ -543,6 +555,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -865,6 +884,27 @@ document.write('<script src="' + src + '" id="sozz"><\/script>');
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="/js/src/Valine.min.js"></script>
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'OceRHliDNgLTXw4FDd6GdPny-gzGzoHsz',
+        appKey: '6p03t3Gje3MxO8valqCDkNlS',
+        placeholder: '欢迎拍砖..',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 

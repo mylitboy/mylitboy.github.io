@@ -110,7 +110,7 @@
 <meta property="og:image" content="https://images2018.cnblogs.com/blog/1146526/201806/1146526-20180603150259372-1136051.png">
 <meta property="og:image" content="https://images2018.cnblogs.com/blog/1146526/201806/1146526-20180603150308820-758916932.png">
 <meta property="og:image" content="https://images2018.cnblogs.com/blog/1146526/201806/1146526-20180603150329293-1429794074.png">
-<meta property="og:updated_time" content="2018-12-11T14:35:47.303Z">
+<meta property="og:updated_time" content="2019-05-16T02:59:56.747Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="蓝牙Mesh材料收集">
 <meta name="twitter:description" content="蓝牙Mesh概念介绍一个智能设备在未加入蓝牙Mesh网络之前称为Device，加入Mesh网络（Porvisioning过程）后，称为Node（节点）。每个Node可以包含多个Element（比如智能插排，每一个插孔都是一个Element），一个Element对应一个Unicast address（16bits，32767个地址，bit15=0）；每个Element可以包含多个Model（用来发送">
@@ -360,6 +360,18 @@
             </span>
           
 
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/article/iot/ble-sig-mesh-learn.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/article/iot/ble-sig-mesh-learn.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1695,6 +1707,13 @@
 
           
 
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
         </div>
         
           
@@ -2016,6 +2035,27 @@ document.write('<script src="' + src + '" id="sozz"><\/script>');
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="/js/src/Valine.min.js"></script>
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'OceRHliDNgLTXw4FDd6GdPny-gzGzoHsz',
+        appKey: '6p03t3Gje3MxO8valqCDkNlS',
+        placeholder: '欢迎拍砖..',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 

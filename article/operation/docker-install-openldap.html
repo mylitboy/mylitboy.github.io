@@ -90,7 +90,7 @@
 <meta property="og:image" content="https://blog.mylitboy.com/article/operation/docker-install-openldap/1553677258095.png">
 <meta property="og:image" content="https://blog.mylitboy.com/article/operation/docker-install-openldap/1553676119855.png">
 <meta property="og:image" content="https://blog.mylitboy.com/article/operation/docker-install-openldap/1553676290892.png">
-<meta property="og:updated_time" content="2019-05-08T05:31:51.898Z">
+<meta property="og:updated_time" content="2019-05-16T02:59:56.748Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker安装OpenLDAP及PHPLdapAdmin客户端">
 <meta name="twitter:description" content="Docker安装OpenLDAP及PHPLdapAdmin客户端 OpenLDAP是轻型目录访问协议（Lightweight Directory Access Protocol，LDAP）的自由和开源的实现，在其OpenLDAP许可证下发行，并已经被包含在众多流行的Linux发行版中。它主要包括下述4个部分：slapd - 独立LDAP守护服务slurpd - 独立的LDAP更新复制守护服务实现L">
@@ -319,6 +319,18 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/article/operation/docker-install-openldap.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/article/operation/docker-install-openldap.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
           
           
@@ -483,6 +495,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -805,6 +824,27 @@ document.write('<script src="' + src + '" id="sozz"><\/script>');
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="/js/src/Valine.min.js"></script>
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'OceRHliDNgLTXw4FDd6GdPny-gzGzoHsz',
+        appKey: '6p03t3Gje3MxO8valqCDkNlS',
+        placeholder: '欢迎拍砖..',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 

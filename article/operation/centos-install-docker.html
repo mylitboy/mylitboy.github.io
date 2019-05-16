@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="-麦粒橙-技术博客-">
 <meta property="og:description" content="CentOS 安装 DockerDocker三大核心概念：镜像、容器和仓库 1. 镜像 镜像是docker运行容器的前提，docter运行容器前需要本地存在对应的镜像。如果镜像不存在本地，docter会尝试先从默认镜像仓库下载（默认使用docter hub公共注册服务器中的仓库），用户也可以通过配置，使用自定义的镜像仓库 2. 容器 容器是镜像的一个运行实例 3. 仓库 集中存放镜像的地方 Cen">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-11T14:35:47.303Z">
+<meta property="og:updated_time" content="2019-05-16T02:59:56.748Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS安装Docker">
 <meta name="twitter:description" content="CentOS 安装 DockerDocker三大核心概念：镜像、容器和仓库 1. 镜像 镜像是docker运行容器的前提，docter运行容器前需要本地存在对应的镜像。如果镜像不存在本地，docter会尝试先从默认镜像仓库下载（默认使用docter hub公共注册服务器中的仓库），用户也可以通过配置，使用自定义的镜像仓库 2. 容器 容器是镜像的一个运行实例 3. 仓库 集中存放镜像的地方 Cen">
@@ -337,6 +337,18 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/article/operation/centos-install-docker.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/article/operation/centos-install-docker.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
           
           
@@ -516,6 +528,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -838,6 +857,27 @@ document.write('<script src="' + src + '" id="sozz"><\/script>');
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="/js/src/Valine.min.js"></script>
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'OceRHliDNgLTXw4FDd6GdPny-gzGzoHsz',
+        appKey: '6p03t3Gje3MxO8valqCDkNlS',
+        placeholder: '欢迎拍砖..',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 

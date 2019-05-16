@@ -90,7 +90,7 @@
 <meta property="og:image" content="https://blog.mylitboy.com/article/bigdata/HDFS_File_System.png">
 <meta property="og:image" content="https://blog.mylitboy.com/article/bigdata/HDFS_Read.png">
 <meta property="og:image" content="https://blog.mylitboy.com/article/bigdata/HDFS_Write.png">
-<meta property="og:updated_time" content="2018-12-11T14:35:47.300Z">
+<meta property="og:updated_time" content="2019-05-16T02:59:56.746Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[Hadoop入门] HDFS介绍及使用">
 <meta name="twitter:description" content="HDFS介绍Hadoop分布式文件系统(HDFS)被设计成适合运行在通用硬件(commodity hardware)上的分布式文件系统。  它和现有的分布式文件系统有很多共同点。但同时，它和其他的分布式文件系统的区别也是很明显的。HDFS是一个高度容错性的系统，适合部署在廉价的机器上。HDFS能提供高吞吐量的数据访问，非常适合大规模数据集上的应用。HDFS放宽了一部分POSIX约束，来实现流式读取">
@@ -340,6 +340,18 @@
             </span>
           
 
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/article/bigdata/hadoop-hdfs-introduction-and-simple-use.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/article/bigdata/hadoop-hdfs-introduction-and-simple-use.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -657,6 +669,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -979,6 +998,27 @@ document.write('<script src="' + src + '" id="sozz"><\/script>');
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="/js/src/Valine.min.js"></script>
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'OceRHliDNgLTXw4FDd6GdPny-gzGzoHsz',
+        appKey: '6p03t3Gje3MxO8valqCDkNlS',
+        placeholder: '欢迎拍砖..',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 

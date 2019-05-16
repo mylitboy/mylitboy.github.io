@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="麦粒橙, Mylitboy">
+  <meta name="keywords" content="Mylitboy, 麦粒橙">
 
 
 
@@ -80,14 +80,14 @@
 
 
 <meta name="description" content="主站：mylitboy.com   博客：blog.mylitboy.com  知识体系：系统 Windows Windows XP/7/10 系统、网络、存储   Linux CentOS Ubuntu   MacOS Mac PC 黑苹果 虚拟机安装    前端 HTML/CSS Bootstrap Element   JavaScript VueJs ExtJS NodeJS EChart">
-<meta name="keywords" content="麦粒橙, mylitboy, 博客">
+<meta name="keywords" content="Mylitboy, 麦粒橙">
 <meta property="og:type" content="website">
 <meta property="og:title" content="关于">
 <meta property="og:url" content="https://blog.mylitboy.com/about/index.html">
 <meta property="og:site_name" content="-麦粒橙-技术博客-">
 <meta property="og:description" content="主站：mylitboy.com   博客：blog.mylitboy.com  知识体系：系统 Windows Windows XP/7/10 系统、网络、存储   Linux CentOS Ubuntu   MacOS Mac PC 黑苹果 虚拟机安装    前端 HTML/CSS Bootstrap Element   JavaScript VueJs ExtJS NodeJS EChart">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-14T06:59:52.000Z">
+<meta property="og:updated_time" content="2019-05-16T02:59:56.749Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于">
 <meta name="twitter:description" content="主站：mylitboy.com   博客：blog.mylitboy.com  知识体系：系统 Windows Windows XP/7/10 系统、网络、存储   Linux CentOS Ubuntu   MacOS Mac PC 黑苹果 虚拟机安装    前端 HTML/CSS Bootstrap Element   JavaScript VueJs ExtJS NodeJS EChart">
@@ -553,6 +553,9 @@
           
 
   
+    <div class="comments" id="comments">
+    </div>
+  
 
 
 
@@ -877,6 +880,27 @@ document.write('<script src="' + src + '" id="sozz"><\/script>');
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="/js/src/Valine.min.js"></script>
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'OceRHliDNgLTXw4FDd6GdPny-gzGzoHsz',
+        appKey: '6p03t3Gje3MxO8valqCDkNlS',
+        placeholder: '欢迎拍砖..',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 

@@ -88,7 +88,7 @@
 <meta property="og:description" content="Markdown简介及基础语法  基础语法标题类一级标题1# 一级标题 二级标题1## 二级标题  三级标题，四级，五级。。以此类推  批注1&amp;gt;备注内容 效果如：  备注内容  列表无需列表123456- A- B* A* B+ A+ B 效果如：  A B   A B   A B  有序列表1234561. A2. B3. C1. A1. B1. C  Markdown会为有序列表自动添">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://blog.mylitboy.com/article/development/logo.png">
-<meta property="og:updated_time" content="2018-12-11T14:35:47.302Z">
+<meta property="og:updated_time" content="2019-05-16T02:59:56.746Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Markdown简介及基础语法">
 <meta name="twitter:description" content="Markdown简介及基础语法  基础语法标题类一级标题1# 一级标题 二级标题1## 二级标题  三级标题，四级，五级。。以此类推  批注1&amp;gt;备注内容 效果如：  备注内容  列表无需列表123456- A- B* A* B+ A+ B 效果如：  A B   A B   A B  有序列表1234561. A2. B3. C1. A1. B1. C  Markdown会为有序列表自动添">
@@ -339,6 +339,18 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/article/development/markdown-introduction-and-basic-syntax.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/article/development/markdown-introduction-and-basic-syntax.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
           
           
@@ -470,7 +482,7 @@
 <h2 id="URL链接"><a href="#URL链接" class="headerlink" title="URL链接"></a>URL链接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[麦粒橙-技术博客](https://blog.mylitboy.com)</span><br></pre></td></tr></table></figure>
 <p><a href="https://blog.mylitboy.com">麦粒橙-技术博客</a></p>
 <h2 id="邮箱地址"><a href="#邮箱地址" class="headerlink" title="邮箱地址"></a>邮箱地址</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;mail@mylitboy.com&gt;</span><br></pre></td></tr></table></figure>
-<p><a href="mailto:&#x6d;&#97;&#105;&#x6c;&#x40;&#109;&#121;&#108;&#x69;&#x74;&#x62;&#x6f;&#121;&#x2e;&#x63;&#111;&#109;" target="_blank" rel="noopener">&#x6d;&#97;&#105;&#x6c;&#x40;&#109;&#121;&#108;&#x69;&#x74;&#x62;&#x6f;&#121;&#x2e;&#x63;&#111;&#109;</a></p>
+<p><a href="mailto:&#109;&#97;&#105;&#x6c;&#x40;&#x6d;&#x79;&#108;&#x69;&#x74;&#x62;&#x6f;&#x79;&#x2e;&#x63;&#111;&#x6d;" target="_blank" rel="noopener">&#109;&#97;&#105;&#x6c;&#x40;&#x6d;&#x79;&#108;&#x69;&#x74;&#x62;&#x6f;&#x79;&#x2e;&#x63;&#111;&#x6d;</a></p>
 <h1 id="扩展语法"><a href="#扩展语法" class="headerlink" title="扩展语法"></a>扩展语法</h1><blockquote>
 <p>扩展语法，大多编辑器不支持，通常需要安装插件实现。</p>
 </blockquote>
@@ -597,6 +609,13 @@ cond(no)->op</textarea><textarea id="flowchart-0-options" style="display: none">
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -919,6 +938,27 @@ document.write('<script src="' + src + '" id="sozz"><\/script>');
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="/js/src/Valine.min.js"></script>
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'OceRHliDNgLTXw4FDd6GdPny-gzGzoHsz',
+        appKey: '6p03t3Gje3MxO8valqCDkNlS',
+        placeholder: '欢迎拍砖..',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 

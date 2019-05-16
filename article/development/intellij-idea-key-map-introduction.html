@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="-麦粒橙-技术博客-">
 <meta property="og:description" content="Intellij IDEA 常用快捷键常用快捷键   按键 功能     Ctrl＋E 显示最近编辑的文件列表   Shift＋Click 关闭文件   Ctrl＋[ 或 ] 跳到大括号的开头结尾   Ctrl＋Shift＋Backspace 跳转到上次编辑的地方   Ctrl＋F12 显示当前文件的结构   Ctrl＋F7 查询当前元素在当前文件中的引用，然后按F3可以选择   Ctrl＋N 快">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-11T14:35:47.302Z">
+<meta property="og:updated_time" content="2019-05-16T02:59:56.746Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Intellij IDEA 常用快捷键">
 <meta name="twitter:description" content="Intellij IDEA 常用快捷键常用快捷键   按键 功能     Ctrl＋E 显示最近编辑的文件列表   Shift＋Click 关闭文件   Ctrl＋[ 或 ] 跳到大括号的开头结尾   Ctrl＋Shift＋Backspace 跳转到上次编辑的地方   Ctrl＋F12 显示当前文件的结构   Ctrl＋F7 查询当前元素在当前文件中的引用，然后按F3可以选择   Ctrl＋N 快">
@@ -336,6 +336,18 @@
             </span>
           
 
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/article/development/intellij-idea-key-map-introduction.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/article/development/intellij-idea-key-map-introduction.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -869,6 +881,13 @@
 
           
 
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
         </div>
         
           
@@ -1190,6 +1209,27 @@ document.write('<script src="' + src + '" id="sozz"><\/script>');
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="/js/src/Valine.min.js"></script>
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'OceRHliDNgLTXw4FDd6GdPny-gzGzoHsz',
+        appKey: '6p03t3Gje3MxO8valqCDkNlS',
+        placeholder: '欢迎拍砖..',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 

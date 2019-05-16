@@ -2,100 +2,156 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.mylitboy.com/about/index.html</loc>
-    
-    <lastmod>2019-05-14T06:59:52.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.mylitboy.com/article/operation/docker-install-openldap.html</loc>
-    
-    <lastmod>2019-05-08T05:31:51.898Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://blog.mylitboy.com/article/operation/ubuntu-install-docker.html</loc>
     
-    <lastmod>2019-05-08T05:18:32.101Z</lastmod>
+    <lastmod>2019-05-16T02:59:56.749Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.mylitboy.com/article/frontend/vuejs-install-and-simple-use.html</loc>
+    <loc>https://blog.mylitboy.com/about/index.html</loc>
     
-    <lastmod>2019-05-08T05:18:32.099Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.mylitboy.com/article/operation/docker-install-jenkins.html</loc>
-    
-    <lastmod>2019-05-08T05:18:32.099Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.mylitboy.com/article/backend/spring-boot-introduction-and-simple-use.md.html</loc>
-    
-    <lastmod>2019-05-08T05:18:32.098Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.mylitboy.com/article/development/visual-studio-code-key-map-introduction.html</loc>
-    
-    <lastmod>2019-05-08T05:18:32.098Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.mylitboy.com/article/operation/docker-install-portainer.html</loc>
-    
-    <lastmod>2018-12-12T12:21:43.682Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.mylitboy.com/article/iot/ble-sig-mesh-learn-website.html</loc>
-    
-    <lastmod>2018-12-11T14:35:47.303Z</lastmod>
+    <lastmod>2019-05-16T02:59:56.749Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.mylitboy.com/article/linux/centos-install-shadowsocks-and-configure.html</loc>
     
-    <lastmod>2018-12-11T14:35:47.303Z</lastmod>
+    <lastmod>2019-05-16T02:59:56.748Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.mylitboy.com/article/operation/centos-install-docker.html</loc>
     
-    <lastmod>2018-12-11T14:35:47.303Z</lastmod>
+    <lastmod>2019-05-16T02:59:56.748Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.mylitboy.com/article/operation/centos-set-nginx-auto-start.html</loc>
     
-    <lastmod>2018-12-11T14:35:47.303Z</lastmod>
+    <lastmod>2019-05-16T02:59:56.748Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.mylitboy.com/article/operation/centos7-install-jdk8.html</loc>
     
-    <lastmod>2018-12-11T14:35:47.303Z</lastmod>
+    <lastmod>2019-05-16T02:59:56.748Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.mylitboy.com/article/operation/centos7-install-tomcat.html</loc>
     
-    <lastmod>2018-12-11T14:35:47.303Z</lastmod>
+    <lastmod>2019-05-16T02:59:56.748Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.mylitboy.com/article/operation/docker-install-jenkins.html</loc>
+    
+    <lastmod>2019-05-16T02:59:56.748Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.mylitboy.com/article/operation/docker-install-portainer.html</loc>
+    
+    <lastmod>2019-05-16T02:59:56.748Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.mylitboy.com/article/operation/nginx-set-http-rewrite-to-https.html</loc>
+    
+    <lastmod>2019-05-16T02:59:56.748Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.mylitboy.com/article/operation/docker-install-openldap.html</loc>
+    
+    <lastmod>2019-05-16T02:59:56.748Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.mylitboy.com/article/frontend/vuejs-install-and-simple-use.html</loc>
+    
+    <lastmod>2019-05-16T02:59:56.747Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.mylitboy.com/article/iot/ble-sig-mesh-learn-website.html</loc>
+    
+    <lastmod>2019-05-16T02:59:56.747Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.mylitboy.com/article/iot/ble-sig-mesh-learn.html</loc>
+    
+    <lastmod>2019-05-16T02:59:56.747Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.mylitboy.com/article/bigdata/hive-instroduction-and-simple-use.html</loc>
+    
+    <lastmod>2019-05-16T02:59:56.746Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.mylitboy.com/article/blog/hexo-and-next-config.html</loc>
+    
+    <lastmod>2019-05-16T02:59:56.746Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.mylitboy.com/article/development/git-common-setting.html</loc>
+    
+    <lastmod>2019-05-16T02:59:56.746Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.mylitboy.com/article/development/intellij-idea-key-map-introduction.html</loc>
+    
+    <lastmod>2019-05-16T02:59:56.746Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.mylitboy.com/article/development/markdown-introduction-and-basic-syntax.html</loc>
+    
+    <lastmod>2019-05-16T02:59:56.746Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.mylitboy.com/article/development/visual-studio-code-key-map-introduction.html</loc>
+    
+    <lastmod>2019-05-16T02:59:56.746Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.mylitboy.com/article/bigdata/hadoop-hdfs-introduction-and-simple-use.html</loc>
+    
+    <lastmod>2019-05-16T02:59:56.746Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.mylitboy.com/article/backend/spring-boot-introduction-and-simple-use.md.html</loc>
+    
+    <lastmod>2019-05-16T02:59:56.745Z</lastmod>
     
   </url>
   
@@ -107,49 +163,7 @@
   </url>
   
   <url>
-    <loc>https://blog.mylitboy.com/article/operation/nginx-set-http-rewrite-to-https.html</loc>
-    
-    <lastmod>2018-12-11T14:35:47.303Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.mylitboy.com/article/iot/ble-sig-mesh-learn.html</loc>
-    
-    <lastmod>2018-12-11T14:35:47.303Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.mylitboy.com/article/blog/hexo-and-next-config.html</loc>
-    
-    <lastmod>2018-12-11T14:35:47.302Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://blog.mylitboy.com/article/blog/my-first-page.html</loc>
-    
-    <lastmod>2018-12-11T14:35:47.302Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.mylitboy.com/article/development/git-common-setting.html</loc>
-    
-    <lastmod>2018-12-11T14:35:47.302Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.mylitboy.com/article/development/intellij-idea-key-map-introduction.html</loc>
-    
-    <lastmod>2018-12-11T14:35:47.302Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.mylitboy.com/article/development/markdown-introduction-and-basic-syntax.html</loc>
     
     <lastmod>2018-12-11T14:35:47.302Z</lastmod>
     
@@ -170,13 +184,6 @@
   </url>
   
   <url>
-    <loc>https://blog.mylitboy.com/article/bigdata/hive-instroduction-and-simple-use.html</loc>
-    
-    <lastmod>2018-12-11T14:35:47.300Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://blog.mylitboy.com/article/bigdata/sqoop-install-and-simple-use.html</loc>
     
     <lastmod>2018-12-11T14:35:47.300Z</lastmod>
@@ -185,13 +192,6 @@
   
   <url>
     <loc>https://blog.mylitboy.com/article/blog/hexo-add-image-and-markdown-use-local-image.html</loc>
-    
-    <lastmod>2018-12-11T14:35:47.300Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.mylitboy.com/article/bigdata/hadoop-hdfs-introduction-and-simple-use.html</loc>
     
     <lastmod>2018-12-11T14:35:47.300Z</lastmod>
     

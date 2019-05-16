@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="-麦粒橙-技术博客-">
 <meta property="og:description" content="CentOS安装TomcatTOMCAT下载 下载地址：https://tomcat.apache.org根据需要下载对应的版本。  1wget http://mirrors.shu.edu.cn/apache/tomcat/tomcat-9/v9.0.8/bin/apache-tomcat-9.0.8.tar.gz 解压 1tar -zxvf apache-tomcat-9.0.8.tar.gz">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-11T14:35:47.303Z">
+<meta property="og:updated_time" content="2019-05-16T02:59:56.748Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS7安装Tomcat">
 <meta name="twitter:description" content="CentOS安装TomcatTOMCAT下载 下载地址：https://tomcat.apache.org根据需要下载对应的版本。  1wget http://mirrors.shu.edu.cn/apache/tomcat/tomcat-9/v9.0.8/bin/apache-tomcat-9.0.8.tar.gz 解压 1tar -zxvf apache-tomcat-9.0.8.tar.gz">
@@ -337,6 +337,18 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/article/operation/centos7-install-tomcat.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/article/operation/centos7-install-tomcat.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
           
           
@@ -484,6 +496,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -806,6 +825,27 @@ document.write('<script src="' + src + '" id="sozz"><\/script>');
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="/js/src/Valine.min.js"></script>
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'OceRHliDNgLTXw4FDd6GdPny-gzGzoHsz',
+        appKey: '6p03t3Gje3MxO8valqCDkNlS',
+        placeholder: '欢迎拍砖..',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 
