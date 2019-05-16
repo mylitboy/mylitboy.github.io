@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="开源版禅道ZenTao集成LDAP  注：本文仅针对开源版。 禅道ZenTao专业版，默认集成有LDAP插件，直接配置即可。  Docker安装禅道ZenTao如果未安装禅道的，可使用Docker快速安装，如果已经安装的，可跳过。 1docker run -d -p 80:80 -p 3306:3306 -e BIND_ADDRESS=&amp;quot;false&amp;quot; -v /data/zent">
+<meta name="description" content="开源版禅道ZenTao集成LDAP 注：本文仅针对开源版。 禅道ZenTao专业版，默认集成有LDAP插件，直接配置即可。  Docker安装禅道ZenTao如果未安装禅道的，可使用Docker快速安装，如果已经安装的，可跳过。 1234567docker run -d -p 80:80 -p 3306:3306 \  -e BIND_ADDRESS=&amp;quot;false&amp;quot; \  -">
 <meta name="keywords" content="Mylitboy, 麦粒橙, 禅道, ZenTao, LDAP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="开源版禅道ZenTao集成LDAP">
 <meta property="og:url" content="https://blog.mylitboy.com/article/operation/zentao-config-ldap.html">
 <meta property="og:site_name" content="-麦粒橙-技术博客-">
-<meta property="og:description" content="开源版禅道ZenTao集成LDAP  注：本文仅针对开源版。 禅道ZenTao专业版，默认集成有LDAP插件，直接配置即可。  Docker安装禅道ZenTao如果未安装禅道的，可使用Docker快速安装，如果已经安装的，可跳过。 1docker run -d -p 80:80 -p 3306:3306 -e BIND_ADDRESS=&amp;quot;false&amp;quot; -v /data/zent">
+<meta property="og:description" content="开源版禅道ZenTao集成LDAP 注：本文仅针对开源版。 禅道ZenTao专业版，默认集成有LDAP插件，直接配置即可。  Docker安装禅道ZenTao如果未安装禅道的，可使用Docker快速安装，如果已经安装的，可跳过。 1234567docker run -d -p 80:80 -p 3306:3306 \  -e BIND_ADDRESS=&amp;quot;false&amp;quot; \  -">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://blog.mylitboy.com/article/operation/zentao-config-ldap/1557993519859.png">
-<meta property="og:updated_time" content="2019-05-16T08:15:17.358Z">
+<meta property="og:updated_time" content="2019-05-16T08:20:42.275Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="开源版禅道ZenTao集成LDAP">
-<meta name="twitter:description" content="开源版禅道ZenTao集成LDAP  注：本文仅针对开源版。 禅道ZenTao专业版，默认集成有LDAP插件，直接配置即可。  Docker安装禅道ZenTao如果未安装禅道的，可使用Docker快速安装，如果已经安装的，可跳过。 1docker run -d -p 80:80 -p 3306:3306 -e BIND_ADDRESS=&amp;quot;false&amp;quot; -v /data/zent">
+<meta name="twitter:description" content="开源版禅道ZenTao集成LDAP 注：本文仅针对开源版。 禅道ZenTao专业版，默认集成有LDAP插件，直接配置即可。  Docker安装禅道ZenTao如果未安装禅道的，可使用Docker快速安装，如果已经安装的，可跳过。 1234567docker run -d -p 80:80 -p 3306:3306 \  -e BIND_ADDRESS=&amp;quot;false&amp;quot; \  -">
 <meta name="twitter:image" content="https://blog.mylitboy.com/article/operation/zentao-config-ldap/1557993519859.png">
 
 
@@ -363,12 +363,12 @@
       
 
       
-        <h1 id="开源版禅道ZenTao集成LDAP"><a href="#开源版禅道ZenTao集成LDAP" class="headerlink" title="开源版禅道ZenTao集成LDAP"></a>开源版禅道ZenTao集成LDAP</h1><p><img src="/article/operation/zentao-config-ldap/1557993519859.png" alt="1557993519859"></p>
-<blockquote>
+        <p><img src="/article/operation/zentao-config-ldap/1557993519859.png" alt="1557993519859"></p>
+<h1 id="开源版禅道ZenTao集成LDAP"><a href="#开源版禅道ZenTao集成LDAP" class="headerlink" title="开源版禅道ZenTao集成LDAP"></a>开源版禅道ZenTao集成LDAP</h1><blockquote>
 <p>注：<br><strong>本文仅针对开源版。</strong> 禅道ZenTao专业版，默认集成有LDAP插件，直接配置即可。</p>
 </blockquote>
 <h2 id="Docker安装禅道ZenTao"><a href="#Docker安装禅道ZenTao" class="headerlink" title="Docker安装禅道ZenTao"></a>Docker安装禅道ZenTao</h2><p>如果未安装禅道的，可使用Docker快速安装，如果已经安装的，可跳过。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 80:80 -p 3306:3306 -e BIND_ADDRESS=&quot;false&quot; -v /data/zentao/:/opt/zbox/ --name myzentao idoop/zentao:latest</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 80:80 -p 3306:3306 \</span><br><span class="line">  -e BIND_ADDRESS=&quot;false&quot; \</span><br><span class="line">  -v /data/zentao/:/opt/zbox/ \</span><br><span class="line">  --name myzentao idoop/zentao:latest</span><br><span class="line"></span><br><span class="line"># 单行</span><br><span class="line"># docker run -d -p 80:80 -p 3306:3306 -e BIND_ADDRESS=&quot;false&quot; -v /data/zentao/:/opt/zbox/ --name myzentao idoop/zentao:latest</span><br></pre></td></tr></table></figure>
 <p>安装完成后，访问<code>http://localhost</code>即可。</p>
 <blockquote>
 <p><strong>默认用户名及密码为:<code>admin/123456</code></strong></p>
@@ -414,7 +414,6 @@
 <td>ldap123</td>
 </tr>
 <tr>
-<td></td>
 <td></td>
 <td></td>
 </tr>
