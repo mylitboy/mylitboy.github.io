@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.mylitboy.com/sites/index.html</loc>
+    
+    <lastmod>2019-05-31T10:14:50.928Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.mylitboy.com/article/operation/zentao-config-ldap.html</loc>
     
     <lastmod>2019-05-16T08:26:57.546Z</lastmod>
@@ -23,14 +30,14 @@
   </url>
   
   <url>
-    <loc>https://blog.mylitboy.com/article/linux/centos-install-shadowsocks-and-configure.html</loc>
+    <loc>https://blog.mylitboy.com/article/operation/centos-install-docker.html</loc>
     
     <lastmod>2019-05-16T02:59:56.748Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.mylitboy.com/article/operation/centos-install-docker.html</loc>
+    <loc>https://blog.mylitboy.com/article/linux/centos-install-shadowsocks-and-configure.html</loc>
     
     <lastmod>2019-05-16T02:59:56.748Z</lastmod>
     
@@ -212,14 +219,14 @@
   </url>
   
   <url>
-    <loc>https://blog.mylitboy.com/article/bigdata/flume-install-and-simple-use.html</loc>
+    <loc>https://blog.mylitboy.com/article/bigdata/hadoop-and-its-ecosystem.html</loc>
     
     <lastmod>2018-12-11T14:35:47.299Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.mylitboy.com/article/bigdata/hadoop-and-its-ecosystem.html</loc>
+    <loc>https://blog.mylitboy.com/article/bigdata/flume-install-and-simple-use.html</loc>
     
     <lastmod>2018-12-11T14:35:47.299Z</lastmod>
     

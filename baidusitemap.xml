@@ -7,10 +7,10 @@
     <loc>https://blog.mylitboy.com/article/operation/ubuntu-install-docker.html</loc>
     <lastmod>2019-05-16</lastmod>
   </url>  <url>
-    <loc>https://blog.mylitboy.com/article/linux/centos-install-shadowsocks-and-configure.html</loc>
+    <loc>https://blog.mylitboy.com/article/operation/centos-install-docker.html</loc>
     <lastmod>2019-05-16</lastmod>
   </url>  <url>
-    <loc>https://blog.mylitboy.com/article/operation/centos-install-docker.html</loc>
+    <loc>https://blog.mylitboy.com/article/linux/centos-install-shadowsocks-and-configure.html</loc>
     <lastmod>2019-05-16</lastmod>
   </url>  <url>
     <loc>https://blog.mylitboy.com/article/operation/centos-set-nginx-auto-start.html</loc>
@@ -88,10 +88,10 @@
     <loc>https://blog.mylitboy.com/article/bigdata/hadoop-mapreduce-introduction-and-simple-use.html</loc>
     <lastmod>2018-12-11</lastmod>
   </url>  <url>
-    <loc>https://blog.mylitboy.com/article/bigdata/flume-install-and-simple-use.html</loc>
+    <loc>https://blog.mylitboy.com/article/bigdata/hadoop-and-its-ecosystem.html</loc>
     <lastmod>2018-12-11</lastmod>
   </url>  <url>
-    <loc>https://blog.mylitboy.com/article/bigdata/hadoop-and-its-ecosystem.html</loc>
+    <loc>https://blog.mylitboy.com/article/bigdata/flume-install-and-simple-use.html</loc>
     <lastmod>2018-12-11</lastmod>
   </url>
 </urlset>
